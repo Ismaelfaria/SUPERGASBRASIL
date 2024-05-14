@@ -4,6 +4,7 @@ namespace SUPERGASBRASIL_API.Entities
 {
     public class Sales
     {
+        public Guid IdSales { get; set; }
         public string ClientName { get; set; }
         public int Quantity { get; set; }
         //Menu de Selecão para fazer a logica do tipo de gas

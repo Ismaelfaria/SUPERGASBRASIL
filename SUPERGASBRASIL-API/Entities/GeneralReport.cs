@@ -2,6 +2,7 @@
 {
     public class GeneralReport
     {
+        public Guid IdReport { get; set; }
         public int KitchenGasQuantity { get; set; }
         public int IndustrialGasQuantity { get; set; }
         public int SalesValue { get; set; }

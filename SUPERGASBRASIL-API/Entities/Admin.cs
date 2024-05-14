@@ -18,5 +18,9 @@
             Username = username;
             Password = password;
         }
+        public void Deleted()
+        {
+            IsDeleted = true;
+        }
     }
 }
