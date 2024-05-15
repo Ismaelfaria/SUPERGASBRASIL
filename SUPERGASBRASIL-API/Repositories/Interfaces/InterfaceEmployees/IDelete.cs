@@ -2,7 +2,7 @@
 {
     public interface IDelete
     {
-        void Delete(Guid id);
+        void DeleteEmployee(Guid id);
 
     }
 }

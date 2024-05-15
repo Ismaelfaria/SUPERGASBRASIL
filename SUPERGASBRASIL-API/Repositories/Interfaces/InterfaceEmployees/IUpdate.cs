@@ -4,6 +4,6 @@ namespace SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceEmployees
 {
     public interface IUpdate
     {
-        void Update(int cpf, Employees funcionario);
+        void UpdateEmployee(int cpf, Employees funcionario);
     }
 }

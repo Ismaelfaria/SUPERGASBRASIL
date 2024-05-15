@@ -1,8 +1,10 @@
-﻿namespace SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceAdmin
+﻿using SUPERGASBRASIL_API.Entities;
+
+namespace SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceAdmin
 {
     public interface IUpdate
     {
-        void Update(string userName, Admin adm);
+        void UpdateAdmin(string userName, Admin adm);
 
     }
 }

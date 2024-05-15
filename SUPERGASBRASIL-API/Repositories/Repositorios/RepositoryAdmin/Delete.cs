@@ -1,8 +1,9 @@
 ﻿using SUPERGASBRASIL_API.Persistence.Context;
+using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceAdmin;
 
 namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryAdmin
 {
-    public class Delete
+    public class Delete : IDelete
     {
         private readonly GasContext _context;
         public Delete(GasContext context)

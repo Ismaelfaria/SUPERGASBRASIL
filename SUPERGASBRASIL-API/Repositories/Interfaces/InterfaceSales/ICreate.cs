@@ -4,6 +4,6 @@ namespace SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceSales
 {
     public interface ICreate
     {
-        void Create(Sales venda);
+        void CreateSales(Sales venda);
     }
 }

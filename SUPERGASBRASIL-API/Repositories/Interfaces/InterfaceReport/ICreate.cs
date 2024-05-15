@@ -4,6 +4,6 @@ namespace SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceReport
 {
     public interface ICreate
     {
-        void Create(GeneralReport relatorio);
+        void CreateReport(GeneralReport relatorio);
     }
 }

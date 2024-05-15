@@ -10,5 +10,11 @@ namespace SUPERGASBRASIL_API.Entities
         //Menu de Selecão para fazer a logica do tipo de gas
         public string Type { get; set; }
         public DateTime TimeOfSale { get; set; }
+        public bool IsDeleted { get; set; }
+
+        public void Deleted()
+        {
+            IsDeleted = true;
+        }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using SUPERGASBRASIL_API.Entities;
 using SUPERGASBRASIL_API.Persistence.Context;
+using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceAdmin;
 
 namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryAdmin
 {
-    public class Get
+    public class Get : IGet
     {
         private readonly GasContext _context;
         public Get(GasContext context)

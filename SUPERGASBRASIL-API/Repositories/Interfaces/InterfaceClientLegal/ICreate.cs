@@ -4,6 +4,6 @@ namespace SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceClientLegal
 {
     public interface ICreate
     {
-        void Create(ClientLegalEntity clientLegal);
+        void CreateClientLegal(ClientLegalEntity clientLegal);
     }
 }

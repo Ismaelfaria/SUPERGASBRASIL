@@ -4,6 +4,6 @@ namespace SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceClientNatural
 {
     public interface ICreate
     {
-        void Create(ClientNaturalPerson clientNatural);
+        void CreateClientNatural(ClientNaturalPerson clientNatural);
     }
 }

@@ -6,18 +6,18 @@
         public string Name { get; set; }
         public int Age { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public string CPF { get; set; }
+        public int CPF { get; set; }
         public bool IsDeleted { get; set; }
 
-        public ClientNaturalPerson(string name, int age, DateTime dateOfBirth, string cpf)
+        public ClientNaturalPerson(string name, int age, DateTime dateOfBirth, int cpf)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             Age = age;
             DateOfBirth = dateOfBirth;
-            CPF = cpf ?? throw new ArgumentNullException(nameof(cpf));
+            CPF = cpf;
             IsDeleted = false;
         }
-        public void Update(string name, int age, DateTime dateOfBirth, string cpf)
+        public void Update(string name, int age, DateTime dateOfBirth, int cpf)
         {
             Name = name;
             Age = age;
