@@ -1,21 +1,18 @@
-﻿using SUPERGASBRASIL_API.Persistence.Context;
-using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceAdmin;
+﻿using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceAdmin;
+using SUPERGASBRASIL_API.Services.Interfaces.InterfaceAdmin;
 
 namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesAdmin
 {
-    public class Delete : IDelete
+    public class Delete : IDeleteServ
     {
-        private readonly GasContext _context;
-        public Delete(GasContext context)
+        private readonly IDelete Deleted;
+        public Delete(IDelete deleted)
         {
-            _context = context;
+            Deleted = deleted;
         }
         public void DeleteAdmin(Guid id)
         {
-            var userDatabase = _context.Admin.SingleOrDefault(a => a.IdAdmin == id);
-
-            userDatabase.Deleted();
-            _context.SaveChanges();
+            Deleted.DeleteAdmin(id);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceReport
 {
-    public interface IGet
+    public interface IGetServ
     {
         IEnumerable<GeneralReport> FindAll();
         GeneralReport FindByDateGenerated(DateTime dataRelatorio);

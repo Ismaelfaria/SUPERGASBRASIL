@@ -1,22 +1,19 @@
 ﻿using SUPERGASBRASIL_API.Entities;
-using SUPERGASBRASIL_API.Persistence.Context;
 using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceClientNatural;
+using SUPERGASBRASIL_API.Services.Interfaces.InterfaceClientNatural;
 
 namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesClientNatural
 {
-    public class Update : IUpdate
+    public class Update : IUpdateServ
     {
-        private readonly GasContext _context;
-        public Update(GasContext context)
+        private readonly IUpdate UpdateCn;
+        public Update(IUpdate updateCn)
         {
-            _context = context;
+            UpdateCn = updateCn;
         }
         public void UpdateClientNatural(int cpf, ClientNaturalPerson clientNatural)
         {
-            var userDatabase = _context.ClientNatural.SingleOrDefault(a => a.CPF == cpf);
-
-            userDatabase.Update(clientNatural.Name, clientNatural.Age, clientNatural.DateOfBirth, clientNatural.CPF);
-            _context.SaveChanges();
+            UpdateCn.UpdateClientNatural(cpf, clientNatural);
         }
     }
 }

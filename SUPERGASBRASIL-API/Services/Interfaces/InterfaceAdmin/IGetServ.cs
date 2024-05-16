@@ -2,9 +2,9 @@
 
 namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceAdmin
 {
-    public interface IUpdate
+    public interface IGetServ
     {
-        void UpdateAdmin(string userName, Admin adm);
-
+        IEnumerable<Admin> FindAll();
+        Admin FindByUserName(string name);
     }
 }

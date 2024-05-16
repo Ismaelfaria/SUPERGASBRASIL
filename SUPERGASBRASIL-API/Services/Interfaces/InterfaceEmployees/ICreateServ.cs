@@ -2,8 +2,8 @@
 
 namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceEmployees
 {
-    public interface IUpdate
+    public interface ICreateServ
     {
-        void UpdateEmployee(int cpf, Employees funcionario);
+        void CreateEmployee(Employees funcionario);
     }
 }

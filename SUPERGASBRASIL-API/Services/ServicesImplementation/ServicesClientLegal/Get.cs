@@ -1,45 +1,36 @@
 ﻿using SUPERGASBRASIL_API.Entities;
 using SUPERGASBRASIL_API.Persistence.Context;
 using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceClientLegal;
+using SUPERGASBRASIL_API.Services.Interfaces.InterfaceClientLegal;
 
 namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesClientLegal
 {
-    public class Get : IGet
+    public class Get : IGetServ
     {
-        private readonly GasContext _context;
-        public Get(GasContext context)
+        private readonly IGet GetC;
+        public Get(IGet getC)
         {
-            _context = context;
+            GetC = getC;
         }
         public IEnumerable<ClientLegalEntity> FindAll()
         {
-            var usersDatabase = _context.ClientLegal.Where(a => !a.IsDeleted).ToList();
+            var usersDatabase = GetC.FindAll();
 
             return usersDatabase;
         }
 
         public ClientLegalEntity FindByCnpj(int cnpj)
         {
-            var userDatabase = _context.ClientLegal.SingleOrDefault(a => a.TaxIdentificationNumberCNPJ == cnpj);
+            var usersDatabase = GetC.FindByCnpj(cnpj);
 
-            if (userDatabase == null)
-            {
-                return null;
-            }
-
-            return userDatabase;
+            return usersDatabase;
         }
 
         public ClientLegalEntity FindByCompanyName(string name)
         {
-            var userDatabase = _context.ClientLegal.SingleOrDefault(a => a.CompanyName == name);
+            var usersDatabase = GetC.FindByCompanyName(name);
 
-            if (userDatabase == null)
-            {
-                return null;
-            }
-
-            return userDatabase;
+            return usersDatabase;
         }
 
     }

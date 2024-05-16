@@ -1,29 +1,35 @@
 ﻿using SUPERGASBRASIL_API.Entities;
-using SUPERGASBRASIL_API.Persistence.Context;
 using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceClientNatural;
+using SUPERGASBRASIL_API.Services.Interfaces.InterfaceClientNatural;
 
 namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesClientNatural
 {
-    public class Get : IGet
+    public class Get : IGetServ
     {
-        private readonly GasContext _context;
-        public Get(GasContext context)
+        private readonly IGet GetCn;
+        public Get(IGet getCn)
         {
-            _context = context;
+            GetCn = getCn;
         }
         public IEnumerable<ClientNaturalPerson> FindAll()
         {
-            throw new NotImplementedException();
+            var usersDatabase = GetCn.FindAll();
+
+            return usersDatabase;
         }
 
         public ClientNaturalPerson FindByCpf(int cpf)
         {
-            throw new NotImplementedException();
+            var usersDatabase = GetCn.FindByCpf(cpf);
+
+            return usersDatabase;
         }
 
         public ClientNaturalPerson FindByName(string name)
         {
-            throw new NotImplementedException();
+            var usersDatabase = GetCn.FindByName(name);
+
+            return usersDatabase;
         }
     }
 }

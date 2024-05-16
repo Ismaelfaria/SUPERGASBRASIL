@@ -1,20 +1,19 @@
 ﻿using SUPERGASBRASIL_API.Entities;
-using SUPERGASBRASIL_API.Persistence.Context;
 using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceAdmin;
+using SUPERGASBRASIL_API.Services.Interfaces.InterfaceAdmin;
 
 namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesAdmin
 {
-    public class Create : ICreate
+    public class Create : ICreateServ
     {
-        private readonly GasContext _context;
-        public Create(GasContext context)
+        private readonly ICreate Admin;
+        public Create(ICreate admin)
         {
-            _context = context;
+            Admin = admin;
         }
-        public void CreateAdmin(Admin client)
+        public void CreateAdmin(Admin admin)
         {
-            _context.Admin.Add(client);
-            _context.SaveChanges();
+            Admin.CreateAdmin(admin);
         }
     }
 }

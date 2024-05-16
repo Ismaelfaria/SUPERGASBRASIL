@@ -1,21 +1,18 @@
-﻿using SUPERGASBRASIL_API.Persistence.Context;
-using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceClientNatural;
+﻿using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceClientNatural;
+using SUPERGASBRASIL_API.Services.Interfaces.InterfaceClientNatural;
 
 namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesClientNatural
 {
-    public class Delete : IDelete
+    public class Delete : IDeleteServ
     {
-        private readonly GasContext _context;
-        public Delete(GasContext context)
+        private readonly IDelete DeleteCn;
+        public Delete(IDelete deleteCn)
         {
-            _context = context;
+            DeleteCn = deleteCn;
         }
         public void DeleteClientNatural(Guid id)
         {
-            var userDatabase = _context.ClientNatural.SingleOrDefault(a => a.IdClientNaturalPerson == id);
-
-            userDatabase.Deleted();
-            _context.SaveChanges();
+            DeleteCn.DeleteClientNatural(id);
         }
     }
 }

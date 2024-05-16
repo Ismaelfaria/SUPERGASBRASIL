@@ -1,21 +1,19 @@
 ﻿using SUPERGASBRASIL_API.Persistence.Context;
 using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceEmployees;
+using SUPERGASBRASIL_API.Services.Interfaces.InterfaceEmployees;
 
 namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesEmployee
 {
-    public class Delete : IDelete
+    public class Delete : IDeleteServ
     {
-        private readonly GasContext _context;
-        public Delete(GasContext context)
+        private readonly IDelete DeleteE;
+        public Delete(IDelete deleteE)
         {
-            _context = context;
+            DeleteE = deleteE;
         }
         public void DeleteEmployee(Guid id)
         {
-            var userDatabase = _context.Employees.SingleOrDefault(a => a.IdEmployees == id);
-
-            userDatabase.Deleted();
-            _context.SaveChanges();
+            DeleteE.DeleteEmployee(id);
         }
     }
 }

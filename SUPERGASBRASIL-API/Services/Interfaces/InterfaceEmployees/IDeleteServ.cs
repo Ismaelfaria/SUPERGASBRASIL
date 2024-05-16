@@ -1,6 +1,6 @@
 ﻿namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceEmployees
 {
-    public interface IDelete
+    public interface IDeleteServ
     {
         void DeleteEmployee(Guid id);
 

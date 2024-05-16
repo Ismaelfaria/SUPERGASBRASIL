@@ -2,7 +2,7 @@
 
 namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceEmployees
 {
-    public interface IGet
+    public interface IGetServ
     {
         IEnumerable<Employees> FindAll();
         Employees FindByCpf(int cpf);

@@ -1,22 +1,20 @@
 ﻿using SUPERGASBRASIL_API.Entities;
 using SUPERGASBRASIL_API.Persistence.Context;
 using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceAdmin;
+using SUPERGASBRASIL_API.Services.Interfaces.InterfaceAdmin;
 
 namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesAdmin
 {
-    public class Update : IUpdate
+    public class Update : IUpdateServ
     {
-        private readonly GasContext _context;
-        public Update(GasContext context)
+        private readonly IUpdate UpdateAdm;
+        public Update(IUpdate updateAdm)
         {
-            _context = context;
+            UpdateAdm = updateAdm;
         }
         public void UpdateAdmin(string userName, Admin admin)
         {
-            var userDatabase = _context.Admin.SingleOrDefault(a => a.Username == userName);
-
-            userDatabase.Update(admin.Username, admin.Password);
-            _context.SaveChanges();
+            UpdateAdm.UpdateAdmin(userName, admin);
         }
     }
 }

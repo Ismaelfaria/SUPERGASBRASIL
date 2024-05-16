@@ -1,33 +1,29 @@
 ﻿using SUPERGASBRASIL_API.Entities;
 using SUPERGASBRASIL_API.Persistence.Context;
 using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceReport;
+using SUPERGASBRASIL_API.Services.Interfaces.InterfaceReport;
 
 namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesReport
 {
-    public class Get : IGet
+    public class Get : IGetServ
     {
-        private readonly GasContext _context;
-        public Get(GasContext context)
+        private readonly IGet GetR;
+        public Get(IGet getR)
         {
-            _context = context;
+            GetR = getR;
         }
         public IEnumerable<GeneralReport> FindAll()
         {
-            var usersDatabase = _context.GeneralReport.ToList();
+            var usersDatabase = GetR.FindAll();
 
             return usersDatabase;
         }
 
         public GeneralReport FindByDateGenerated(DateTime dataRelatorio)
         {
-            var userDatabase = _context.GeneralReport.SingleOrDefault(a => a.DateGenerated == dataRelatorio);
+            var usersDatabase = GetR.FindByDateGenerated(dataRelatorio);
 
-            if (userDatabase == null)
-            {
-                return null;
-            }
-
-            return userDatabase;
+            return usersDatabase;
         }
     }
 }

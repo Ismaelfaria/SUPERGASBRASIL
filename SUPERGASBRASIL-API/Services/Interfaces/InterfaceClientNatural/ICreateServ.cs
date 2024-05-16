@@ -2,8 +2,8 @@
 
 namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceClientNatural
 {
-    public interface IUpdate
+    public interface ICreateServ
     {
-        void UpdateClientNatural(int cpf, ClientNaturalPerson clientLegal);
+        void CreateClientNatural(ClientNaturalPerson clientNatural);
     }
 }

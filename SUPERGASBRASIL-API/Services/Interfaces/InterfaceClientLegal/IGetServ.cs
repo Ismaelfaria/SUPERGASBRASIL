@@ -2,7 +2,7 @@
 
 namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceClientLegal
 {
-    public interface IGet
+    public interface IGetServ
     {
         IEnumerable<ClientLegalEntity> FindAll();
         ClientLegalEntity FindByCnpj(int cnpj);

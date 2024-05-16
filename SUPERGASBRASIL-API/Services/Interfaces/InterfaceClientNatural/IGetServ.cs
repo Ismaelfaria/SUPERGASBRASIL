@@ -2,7 +2,7 @@
 
 namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceClientNatural
 {
-    public interface IGet
+    public interface IGetServ
     {
         IEnumerable<ClientNaturalPerson> FindAll();
         ClientNaturalPerson FindByCpf(int cpf);

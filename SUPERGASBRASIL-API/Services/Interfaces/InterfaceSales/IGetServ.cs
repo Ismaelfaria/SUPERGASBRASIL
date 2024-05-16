@@ -1,8 +1,8 @@
 ﻿using SUPERGASBRASIL_API.Entities;
 
-namespace SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceSales
+namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceSales
 {
-    public interface IGet
+    public interface IGetServ
     {
         IEnumerable<Sales> FindAll();
         Sales FindById(Guid id);

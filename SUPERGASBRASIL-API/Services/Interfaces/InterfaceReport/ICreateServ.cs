@@ -2,7 +2,7 @@
 
 namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceReport
 {
-    public interface ICreate
+    public interface ICreateServ
     {
         void CreateReport(GeneralReport relatorio);
     }

@@ -1,20 +1,19 @@
 ﻿using SUPERGASBRASIL_API.Entities;
-using SUPERGASBRASIL_API.Persistence.Context;
 using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceReport;
+using SUPERGASBRASIL_API.Services.Interfaces.InterfaceReport;
 
 namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesReport
 {
-    public class Create : ICreate
+    public class Create : ICreateServ
     {
-        private readonly GasContext _context;
-        public Create(GasContext context)
+        private readonly ICreate CreateR;
+        public Create(ICreate createR)
         {
-            _context = context;
+            CreateR = createR;
         }
         public void CreateReport(GeneralReport relatorio)
         {
-            _context.GeneralReport.Add(relatorio);
-            _context.SaveChanges();
+            CreateR.CreateReport(relatorio);
         }
     }
 }

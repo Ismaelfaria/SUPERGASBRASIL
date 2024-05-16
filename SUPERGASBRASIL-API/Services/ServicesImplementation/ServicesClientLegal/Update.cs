@@ -1,22 +1,20 @@
 ﻿using SUPERGASBRASIL_API.Entities;
 using SUPERGASBRASIL_API.Persistence.Context;
 using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceClientLegal;
+using SUPERGASBRASIL_API.Services.Interfaces.InterfaceClientLegal;
 
 namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesClientLegal
 {
-    public class Update : IUpdate
+    public class Update : IUpdateServ
     {
-        private readonly GasContext _context;
-        public Update(GasContext context)
+        private readonly IUpdate UpdateC;
+        public Update(IUpdate updateC)
         {
-            _context = context;
+            UpdateC = updateC;
         }
         public void UpdateClientLegal(int cnpj, ClientLegalEntity clientLegal)
         {
-            var userDatabase = _context.ClientLegal.SingleOrDefault(a => a.TaxIdentificationNumberCNPJ == cnpj);
-
-            userDatabase.Update(clientLegal.CompanyName, clientLegal.TypeOfCompany, clientLegal.BusinessAddress, clientLegal.TaxIdentificationNumberCNPJ, clientLegal.ContactInformation);
-            _context.SaveChanges();
+            UpdateC.UpdateClientLegal(cnpj, clientLegal);
         }
     }
 }

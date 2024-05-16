@@ -1,20 +1,19 @@
 ﻿using SUPERGASBRASIL_API.Entities;
-using SUPERGASBRASIL_API.Persistence.Context;
 using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceClientNatural;
+using SUPERGASBRASIL_API.Services.Interfaces.InterfaceClientNatural;
 
 namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesClientNatural
 {
-    public class Create : ICreate
+    public class Create : ICreateServ
     {
-        private readonly GasContext _context;
-        public Create(GasContext context)
+        private readonly ICreate CreateCn;
+        public Create(ICreate createCn)
         {
-            _context = context;
+            CreateCn = createCn;
         }
         public void CreateClientNatural(ClientNaturalPerson clientNatural)
         {
-            _context.ClientNatural.Add(clientNatural);
-            _context.SaveChanges();
+            CreateCn.CreateClientNatural(clientNatural);
         }
 
     }

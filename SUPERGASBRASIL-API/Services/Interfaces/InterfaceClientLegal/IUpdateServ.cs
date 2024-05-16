@@ -2,7 +2,7 @@
 
 namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceClientLegal
 {
-    public interface IUpdate
+    public interface IUpdateServ
     {
         void UpdateClientLegal(int cnpj, ClientLegalEntity clientLegal);
 
