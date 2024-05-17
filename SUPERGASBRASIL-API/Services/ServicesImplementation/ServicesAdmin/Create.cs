@@ -6,8 +6,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesAdmin
 {
     public class Create : ICreateServ
     {
-        private readonly ICreate Admin;
-        public Create(ICreate admin)
+        private readonly ICreateA Admin;
+        public Create(ICreateA admin)
         {
             Admin = admin;
         }

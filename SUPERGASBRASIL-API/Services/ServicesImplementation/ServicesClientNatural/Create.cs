@@ -6,8 +6,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesClientNatur
 {
     public class Create : ICreateServ
     {
-        private readonly ICreate CreateCn;
-        public Create(ICreate createCn)
+        private readonly ICreateClientN CreateCn;
+        public Create(ICreateClientN createCn)
         {
             CreateCn = createCn;
         }

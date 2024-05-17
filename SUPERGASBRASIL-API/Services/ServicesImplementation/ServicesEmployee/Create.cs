@@ -7,8 +7,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesEmployee
 {
     public class Create : ICreateServ
     {
-        private readonly ICreate CreateE;
-        public Create(ICreate createE)
+        private readonly ICreateE CreateE;
+        public Create(ICreateE createE)
         {
             CreateE = createE;
         }

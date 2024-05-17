@@ -5,8 +5,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesClientNatur
 {
     public class Delete : IDeleteServ
     {
-        private readonly IDelete DeleteCn;
-        public Delete(IDelete deleteCn)
+        private readonly IDeleteClientN DeleteCn;
+        public Delete(IDeleteClientN deleteCn)
         {
             DeleteCn = deleteCn;
         }

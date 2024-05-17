@@ -6,8 +6,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesClientNatur
 {
     public class Get : IGetServ
     {
-        private readonly IGet GetCn;
-        public Get(IGet getCn)
+        private readonly IGetClientN GetCn;
+        public Get(IGetClientN getCn)
         {
             GetCn = getCn;
         }

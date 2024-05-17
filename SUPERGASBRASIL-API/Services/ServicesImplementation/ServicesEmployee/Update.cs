@@ -7,8 +7,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesEmployee
 {
     public class Update : IUpdateServ
     {
-        private readonly IUpdate UpdateE;
-        public Update(IUpdate updateE)
+        private readonly IUpdateE UpdateE;
+        public Update(IUpdateE updateE)
         {
             UpdateE = updateE;
         }

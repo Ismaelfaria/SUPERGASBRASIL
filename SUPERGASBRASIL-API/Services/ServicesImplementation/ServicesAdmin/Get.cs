@@ -7,8 +7,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesAdmin
 {
     public class Get : IGetServ
     {
-        private readonly  IGet GetAdmin;
-        public Get(IGet getAdmin)
+        private readonly  IGetA GetAdmin;
+        public Get(IGetA getAdmin)
         {
             GetAdmin = getAdmin;
         }

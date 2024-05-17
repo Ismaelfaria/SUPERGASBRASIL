@@ -6,8 +6,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesEmployee
 {
     public class Delete : IDeleteServ
     {
-        private readonly IDelete DeleteE;
-        public Delete(IDelete deleteE)
+        private readonly IDeleteE DeleteE;
+        public Delete(IDeleteE deleteE)
         {
             DeleteE = deleteE;
         }

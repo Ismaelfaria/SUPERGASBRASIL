@@ -7,8 +7,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesClientLegal
 {
     public class Update : IUpdateServ
     {
-        private readonly IUpdate UpdateC;
-        public Update(IUpdate updateC)
+        private readonly IUpdateClientL UpdateC;
+        public Update(IUpdateClientL updateC)
         {
             UpdateC = updateC;
         }

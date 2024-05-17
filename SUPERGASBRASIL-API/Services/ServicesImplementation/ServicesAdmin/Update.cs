@@ -7,8 +7,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesAdmin
 {
     public class Update : IUpdateServ
     {
-        private readonly IUpdate UpdateAdm;
-        public Update(IUpdate updateAdm)
+        private readonly IUpdateA UpdateAdm;
+        public Update(IUpdateA updateAdm)
         {
             UpdateAdm = updateAdm;
         }

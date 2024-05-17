@@ -6,8 +6,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesClientNatur
 {
     public class Update : IUpdateServ
     {
-        private readonly IUpdate UpdateCn;
-        public Update(IUpdate updateCn)
+        private readonly IUpdateClientN UpdateCn;
+        public Update(IUpdateClientN updateCn)
         {
             UpdateCn = updateCn;
         }

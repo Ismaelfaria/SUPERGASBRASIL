@@ -6,8 +6,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesClientLegal
 {
     public class Create : ICreateServ
     {
-        private readonly ICreate CreateC;
-        public Create(ICreate createC)
+        private readonly ICreateClientL CreateC;
+        public Create(ICreateClientL createC)
         {
             CreateC = createC;
         }

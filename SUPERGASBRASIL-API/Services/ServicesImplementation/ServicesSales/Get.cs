@@ -7,8 +7,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.ServicesSales
 {
     public class Get : IGetServ
     {
-        private readonly IGet GetS;
-        public Get(IGet getS)
+        private readonly IGetS GetS;
+        public Get(IGetS getS)
         {
             GetS = getS;
         }
