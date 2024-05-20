@@ -1,3 +1,4 @@
+using SUPERGASBRASIL_API.Mappers.Profiles;
 using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceAdmin;
 using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceClientLegal;
 using SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceClientNatural;
@@ -31,6 +32,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddAutoMapper(typeof(ProfileMapperGas));
 
 //Repository Admin
 builder.Services.AddScoped<ICreateA,CreateA>();
