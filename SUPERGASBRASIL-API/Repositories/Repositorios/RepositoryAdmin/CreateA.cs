@@ -11,10 +11,12 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryAdmin
         {
             _context = context;
         }
-        public void CreateAdmin(Admin client)
+        public Admin CreateAdmin(Admin admin)
         {
-            _context.Admin.Add(client);
+            _context.Admin.Add(admin);
             _context.SaveChanges();
+
+            return admin;
         }
     }
 }

@@ -4,6 +4,6 @@ namespace SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceAdmin
 {
     public interface ICreateA
     {
-        void CreateAdmin(Admin adm);
+        Admin CreateAdmin(Admin adm);
     }
 }

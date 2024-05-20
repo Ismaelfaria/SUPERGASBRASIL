@@ -11,10 +11,12 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositorySales
         {
             _context = context;
         }
-        public void CreateSales(Sales venda)
+        public Sales CreateSales(Sales venda)
         {
             _context.Sales.Add(venda);
             _context.SaveChanges();
+
+            return venda;
         }
     }
 }

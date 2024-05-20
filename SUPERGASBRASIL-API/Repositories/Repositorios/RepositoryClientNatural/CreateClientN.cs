@@ -11,10 +11,12 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryClientNatural
         {
             _context = context;
         }
-        public void CreateClientNatural(ClientNaturalPerson clientNatural)
+        public ClientNaturalPerson CreateClientNatural(ClientNaturalPerson clientNatural)
         {
             _context.ClientNatural.Add(clientNatural);
             _context.SaveChanges();
+
+            return clientNatural;
         }
 
     }

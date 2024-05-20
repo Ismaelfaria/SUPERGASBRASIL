@@ -1,8 +1,8 @@
 ﻿using SUPERGASBRASIL_API.Entities;
 
-namespace SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceReport
+namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceReport
 {
-    public interface ICreateR
+    public interface ICreateServR
     {
         GeneralReport CreateReport(GeneralReport relatorio);
     }

@@ -1,8 +1,8 @@
 ﻿using SUPERGASBRASIL_API.Entities;
 
-namespace SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceClientLegal
+namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceClientLegal
 {
-    public interface ICreateClientL
+    public interface ICreateServCL
     {
         ClientLegalEntity CreateClientLegal(ClientLegalEntity clientLegal);
     }

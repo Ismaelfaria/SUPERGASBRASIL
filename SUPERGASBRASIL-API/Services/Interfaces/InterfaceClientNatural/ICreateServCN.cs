@@ -1,8 +1,8 @@
 ﻿using SUPERGASBRASIL_API.Entities;
 
-namespace SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceClientNatural
+namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceClientNatural
 {
-    public interface ICreateClientN
+    public interface ICreateServCN
     {
         ClientNaturalPerson CreateClientNatural(ClientNaturalPerson clientNatural);
     }

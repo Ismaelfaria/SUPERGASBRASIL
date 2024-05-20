@@ -11,10 +11,12 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryReport
         {
             _context = context;
         }
-        public void CreateReport(GeneralReport relatorio)
+        public GeneralReport CreateReport(GeneralReport relatorio)
         {
             _context.GeneralReport.Add(relatorio);
             _context.SaveChanges();
+
+            return relatorio;
         }
     }
 }

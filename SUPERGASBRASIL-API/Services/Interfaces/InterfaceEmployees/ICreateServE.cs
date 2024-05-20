@@ -1,8 +1,8 @@
 ﻿using SUPERGASBRASIL_API.Entities;
 
-namespace SUPERGASBRASIL_API.Repositories.Interfaces.InterfaceEmployees
+namespace SUPERGASBRASIL_API.Services.Interfaces.InterfaceEmployees
 {
-    public interface ICreateE
+    public interface ICreateServE
     {
         Employees CreateEmployee(Employees funcionario);
     }

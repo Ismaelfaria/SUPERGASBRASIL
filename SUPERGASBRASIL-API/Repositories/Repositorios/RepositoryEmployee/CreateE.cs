@@ -11,10 +11,12 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryEmployee
         {
             _context = context;
         }
-        public void CreateEmployee(Employees employee)
+        public Employees CreateEmployee(Employees employee)
         {
             _context.Employees.Add(employee);
             _context.SaveChanges();
+
+            return employee;
         }
     }
 }
