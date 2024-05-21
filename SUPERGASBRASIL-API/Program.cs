@@ -1,4 +1,9 @@
+using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using SUPERGASBRASIL_API.Mappers.Models.InputModel;
 using SUPERGASBRASIL_API.Mappers.Profiles;
+using SUPERGASBRASIL_API.Persistence.Context;
 using SUPERGASBRASIL_API.Repositories.Interfaces;
 using SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryAdmin;
 using SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryClientLegal;
@@ -8,9 +13,16 @@ using SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryReport;
 using SUPERGASBRASIL_API.Repositories.Repositorios.RepositorySales;
 using SUPERGASBRASIL_API.Services.Interfaces;
 using SUPERGASBRASIL_API.Services.ServicesImplementation;
+using SUPERGASBRASIL_API.Validators;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+var ConnectionString = builder.Configuration.GetConnectionString("");
+
+builder.Services.AddDbContext<GasContext>(o => o.UseSqlServer(ConnectionString));
+
+
 
 // Add services to the container.
 
@@ -41,6 +53,16 @@ builder.Services.AddScoped<IClientNaturalService, ClientNaturalService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IReportService, ReportService>();
 builder.Services.AddScoped<ISalesService, SalesService>();
+
+// Registrar validadores
+builder.Services.AddTransient<IValidator<Admin_InputModel>, Admin_InputValidator>();
+builder.Services.AddTransient<IValidator<ClientLegal_InputModel>, ClientLegal_InputValidator>();
+builder.Services.AddTransient<IValidator<ClientNatural_InputModel>, ClientNatural_InputValidator>();
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "SUPERGASBRASIL_API", Version = "v1" });
+});
 
 var app = builder.Build();
 
