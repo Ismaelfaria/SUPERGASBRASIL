@@ -7,9 +7,9 @@ namespace SUPERGASBRASIL_API.Repositories.Interfaces
         ClientNaturalPerson CreateClientNatural(ClientNaturalPerson clientNatural);
         void DeleteClientNatural(Guid id);
         IEnumerable<ClientNaturalPerson> FindAll();
-        ClientNaturalPerson FindByCpf(int cpf);
+        ClientNaturalPerson FindByCpf(string cpf);
         ClientNaturalPerson FindByName(string name);
-        void UpdateClientNatural(int cpf, ClientNaturalPerson clientLegal);
+        void UpdateClientNatural(string cpf, ClientNaturalPerson clientLegal);
 
     }
 }

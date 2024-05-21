@@ -30,7 +30,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
             return usersDatabase;
         }
 
-        public ClientNaturalPerson FindByCpf(int cpf)
+        public ClientNaturalPerson FindByCpf(string cpf)
         {
             var usersDatabase = client.FindByCpf(cpf);
 
@@ -43,7 +43,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
 
             return usersDatabase;
         }
-        public void UpdateClientNatural(int cpf, ClientNaturalPerson clientNatural)
+        public void UpdateClientNatural(string cpf, ClientNaturalPerson clientNatural)
         {
             client.UpdateClientNatural(cpf, clientNatural);
         }

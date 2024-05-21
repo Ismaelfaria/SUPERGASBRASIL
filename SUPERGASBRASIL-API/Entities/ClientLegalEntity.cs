@@ -7,11 +7,11 @@ namespace SUPERGASBRASIL_API.Entities
         public string CompanyName { get; set; }
         public string TypeOfCompany { get; set; }
         public string BusinessAddress { get; set; }
-        public int TaxIdentificationNumberCNPJ { get; set; }
-        public int ContactInformation { get; set; }
+        public string TaxIdentificationNumberCNPJ { get; set; }
+        public string ContactInformation { get; set; }
         public bool IsDeleted { get; set; }
 
-        public ClientLegalEntity(string companyName, string typeOfCompany, string businessAddress, int taxIdentificationNumberCNPJ, int contactInformation)
+        public ClientLegalEntity(string companyName, string typeOfCompany, string businessAddress, string taxIdentificationNumberCNPJ, string contactInformation)
         {
             CompanyName = companyName ?? throw new ArgumentNullException(nameof(companyName));
             TypeOfCompany = typeOfCompany ?? throw new ArgumentNullException(nameof(typeOfCompany));
@@ -20,7 +20,7 @@ namespace SUPERGASBRASIL_API.Entities
             ContactInformation = contactInformation;
             IsDeleted = false;
         }
-        public void Update(string companyName, string typeOfCompany, string businessAddress, int taxIdentificationNumberCNPJ, int contactInformation)
+        public void Update(string companyName, string typeOfCompany, string businessAddress, string taxIdentificationNumberCNPJ, string contactInformation)
         {
             CompanyName = companyName;
             TypeOfCompany = typeOfCompany;

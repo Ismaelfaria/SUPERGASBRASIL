@@ -24,19 +24,35 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryClientNatural
         }
         public IEnumerable<ClientNaturalPerson> FindAll()
         {
-            throw new NotImplementedException();
+            var usersDatabase = _context.ClientNatural.Where(a => !a.IsDeleted).ToList();
+
+            return usersDatabase;
         }
 
-        public ClientNaturalPerson FindByCpf(int cpf)
+        public ClientNaturalPerson FindByCpf(string cpf)
         {
-            throw new NotImplementedException();
+            var userDatabase = _context.ClientNatural.SingleOrDefault(a => a.CPF == cpf);
+
+            if (userDatabase == null)
+            {
+                return null;
+            }
+
+            return userDatabase;
         }
 
         public ClientNaturalPerson FindByName(string name)
         {
-            throw new NotImplementedException();
+            var userDatabase = _context.ClientNatural.SingleOrDefault(a => a.Name == name);
+
+            if (userDatabase == null)
+            {
+                return null;
+            }
+
+            return userDatabase;
         }
-        public void UpdateClientNatural(int cpf, ClientNaturalPerson clientNatural)
+        public void UpdateClientNatural(string cpf, ClientNaturalPerson clientNatural)
         {
             var userDatabase = _context.ClientNatural.SingleOrDefault(a => a.CPF == cpf);
 

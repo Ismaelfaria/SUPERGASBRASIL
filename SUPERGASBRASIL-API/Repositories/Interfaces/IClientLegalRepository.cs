@@ -7,9 +7,9 @@ namespace SUPERGASBRASIL_API.Repositories.Interfaces
         ClientLegalEntity CreateClientLegal(ClientLegalEntity clientLegal);
         void DeleteClientLegal(Guid id);
         IEnumerable<ClientLegalEntity> FindAll();
-        ClientLegalEntity FindByCnpj(int cnpj);
+        ClientLegalEntity FindByCnpj(string cnpj);
         ClientLegalEntity FindByCompanyName(string name);
-        void UpdateClientLegal(int cnpj, ClientLegalEntity clientLegal);
+        void UpdateClientLegal(string cnpj, ClientLegalEntity clientLegal);
 
     }
 }

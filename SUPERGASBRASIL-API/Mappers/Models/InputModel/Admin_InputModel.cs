@@ -2,10 +2,8 @@
 {
     public class Admin_InputModel
     {
-        public string ClientName { get; set; }
-        public int Quantity { get; set; }
-        //Menu de Selecão para fazer a logica do tipo de gas
-        public string Type { get; set; }
-        public DateTime TimeOfSale { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

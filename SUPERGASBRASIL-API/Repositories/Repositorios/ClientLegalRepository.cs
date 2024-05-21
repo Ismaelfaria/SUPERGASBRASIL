@@ -34,7 +34,7 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryClientLegal
             return usersDatabase;
         }
 
-        public ClientLegalEntity FindByCnpj(int cnpj)
+        public ClientLegalEntity FindByCnpj(string cnpj)
         {
             var userDatabase = _context.ClientLegal.SingleOrDefault(a => a.TaxIdentificationNumberCNPJ == cnpj);
 
@@ -57,7 +57,7 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryClientLegal
 
             return userDatabase;
         }
-        public void UpdateClientLegal(int cnpj, ClientLegalEntity clientLegal)
+        public void UpdateClientLegal(string cnpj, ClientLegalEntity clientLegal)
         {
             var userDatabase = _context.ClientLegal.SingleOrDefault(a => a.TaxIdentificationNumberCNPJ == cnpj);
 
