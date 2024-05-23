@@ -14,6 +14,7 @@ using SUPERGASBRASIL_API.Repositories.Repositorios.RepositorySales;
 using SUPERGASBRASIL_API.Services.Interfaces;
 using SUPERGASBRASIL_API.Services.ServicesImplementation;
 using SUPERGASBRASIL_API.Validators;
+using System.Reflection;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -59,9 +60,14 @@ builder.Services.AddTransient<IValidator<Admin_InputModel>, Admin_InputValidator
 builder.Services.AddTransient<IValidator<ClientLegal_InputModel>, ClientLegal_InputValidator>();
 builder.Services.AddTransient<IValidator<ClientNatural_InputModel>, ClientNatural_InputValidator>();
 
-builder.Services.AddSwaggerGen(c =>
+
+builder.Services.AddSwaggerGen(opt =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "SUPERGASBRASIL_API", Version = "v1" });
+    opt.SwaggerDoc("v1", new OpenApiInfo { Title = "SUPERGASBRASIL_API", Version = "v1" });
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    opt.IncludeXmlComments(xmlPath);
 });
 
 var app = builder.Build();
