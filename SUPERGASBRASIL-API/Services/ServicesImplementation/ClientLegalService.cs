@@ -22,6 +22,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
 
         public ClientLegalEntity CreateClientLegal(ClientLegal_InputModel clientLegal)
         {
+           
+
             var validResult = validator.Validate(clientLegal);
 
             if (!validResult.IsValid)

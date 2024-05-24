@@ -31,6 +31,12 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
 
             var createMapObject = mapper.Map<ClientNaturalPerson>(clientNatural);
 
+            var today = DateTime.Today;
+            var birthDate = createMapObject.DateOfBirth;
+            var age = today.Year - birthDate.Year;
+
+            createMapObject.Age = age;
+
             client.CreateClientNatural(createMapObject);
 
             return createMapObject;

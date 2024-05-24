@@ -20,7 +20,7 @@ namespace SUPERGASBRASIL_API.Controllers
         }
 
         /// <summary>
-        /// Cria um registro no banco de dados.
+        /// Cria um registro de Empresas/Clientes.
         /// </summary>
         /// <remarks>
         /// Exemplo:
@@ -44,6 +44,7 @@ namespace SUPERGASBRASIL_API.Controllers
         {
             try
             {
+                
                 var create = client.CreateClientLegal(clientEntity);
 
                 return CreatedAtAction(nameof(BuscarCnpj), new { cnpj = create.TaxIdentificationNumberCNPJ }, create);
@@ -108,6 +109,7 @@ namespace SUPERGASBRASIL_API.Controllers
                 var clientCpf = client.FindByCnpj(cnpj);
 
                 return Ok(clientCpf);
+
             }
             catch (Exception ex)
             {
@@ -123,6 +125,8 @@ namespace SUPERGASBRASIL_API.Controllers
         ///
         ///     PUT 
         ///     {
+        ///        "cnpj": "22325325-0",
+        /// 
         ///        "nome": "String",
         ///        "tipoDeEmpresa": "IsmaelFit",
         ///        "tipoDeEmpresa": "MEI",

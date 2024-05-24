@@ -20,7 +20,23 @@ namespace SUPERGASBRASIL_API.Controllers
             this.client = client;
             this.mapper = mapper;
         }
-
+        /// <summary>
+        /// Cria um registro de Cliente Fisico.
+        /// </summary>
+        /// <remarks>
+        /// Exemplo:
+        ///
+        ///     POST 
+        ///     {
+        ///        "nome": "String",
+        ///        "Data": "13/05/2000",
+        ///        "CPF": "333666999-60",
+        ///     }
+        ///
+        /// </remarks>
+        /// <returns>Um novo item criado</returns>
+        /// <response code="201">Retorna o novo item criado</response>
+        /// <response code="500">Se o item não for criado</response> 
         [HttpPost]
         public IActionResult CriarClientFisico([FromForm] ClientNatural_InputModel clientEntity)
         {
@@ -38,6 +54,11 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(500, $"Operação não concluida, Erro ao criar client {ex.Message}");
             }
         }
+        ///<summary>
+        /// Buscar todos os Clientes.
+        /// </summary>
+         /// <response code="404">Se o item não for encontrado</response> 
+
         [HttpGet]
         public IActionResult BuscarTodosClientes()
         {
@@ -52,7 +73,11 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(404, $"Clientes não encontrados, Erro na operação {ex.Message}");
             }
         }
-
+        /// <summary>
+        /// Buscar os Clientes pelo nome.
+        /// </summary>
+        ///
+        /// <response code="404">Se o item não for encontrado</response> 
         [HttpGet("{name}")]
         public IActionResult BuscarNome(string name)
         {
@@ -65,10 +90,15 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(404, $"Cliente não encontrado, Erro na operação {ex.Message}");
             }
         }
-
+        /// <summary>
+        /// Buscar os Clientes pelo CPF.
+        /// </summary>
+        ///
+        /// <response code="404">Se o item não for encontrado</response> 
         [HttpGet("{cpf}")]
         public IActionResult BuscarCpf(string cpf)
         {
+
             try
             {
                 var clientCpf = client.FindByCpf(cpf);
@@ -79,7 +109,25 @@ namespace SUPERGASBRASIL_API.Controllers
             {
                 return StatusCode(404, $"Cliente não encontrado, Erro na operação {ex.Message}");
             }
-        }
+        }/// <summary>
+         /// Atualizar um registro de Cliente.
+         /// </summary>
+         /// <remarks>
+         /// Exemplo:
+         ///
+         ///     PUT 
+         ///     {
+         ///        "cpf": "2516...",
+         /// 
+         ///        "nome": "String",
+         ///        "Data": "13/05/2000",
+         ///        "CPF": "333666999-60",
+         ///     }
+         ///
+         /// </remarks>
+         /// <returns>Um novo item atualizado</returns>
+         /// <response code="201">Retorna o novo item atualizado</response>
+         /// <response code="500">Se o item não for atualizado</response> 
         [HttpPut]
         public IActionResult AtualizarRegistro([FromForm] ClientNatural_InputModel clientEntity, string cpf)
         {
@@ -93,7 +141,11 @@ namespace SUPERGASBRASIL_API.Controllers
             {
                 return StatusCode(500, $"Cliente não encontrado, Erro na operação {ex.Message}");
             }
-        }
+        }/// <summary>
+         /// Deletar o Clientes pelo ID.
+         /// </summary>
+         ///
+         /// <response code="500">Se o item não for deletado</response> 
         [HttpDelete]
         public IActionResult DeletarRegistro(Guid id)
         {
