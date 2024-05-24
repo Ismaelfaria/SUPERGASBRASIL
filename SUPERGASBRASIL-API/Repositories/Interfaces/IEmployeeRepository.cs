@@ -6,9 +6,9 @@ namespace SUPERGASBRASIL_API.Repositories.Interfaces
     {
         Employees CreateEmployee(Employees funcionario);
         void DeleteEmployee(Guid id);
-        void UpdateEmployee(int cpf, Employees funcionario);
+        void UpdateEmployee(string cpf, Employees funcionario);
         IEnumerable<Employees> FindAll();
-        Employees FindByCpf(int cpf);
+        Employees FindByCpf(string cpf);
         Employees FindByName(string name);
     }
 }

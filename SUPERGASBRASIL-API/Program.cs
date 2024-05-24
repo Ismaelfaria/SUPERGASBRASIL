@@ -15,6 +15,7 @@ using SUPERGASBRASIL_API.Services.Interfaces;
 using SUPERGASBRASIL_API.Services.ServicesImplementation;
 using SUPERGASBRASIL_API.Validators;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,7 +28,7 @@ builder.Services.AddDbContext<GasContext>(o => o.UseSqlServer(ConnectionString))
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -59,6 +60,7 @@ builder.Services.AddScoped<ISalesService, SalesService>();
 builder.Services.AddTransient<IValidator<Admin_InputModel>, Admin_InputValidator>();
 builder.Services.AddTransient<IValidator<ClientLegal_InputModel>, ClientLegal_InputValidator>();
 builder.Services.AddTransient<IValidator<ClientNatural_InputModel>, ClientNatural_InputValidator>();
+builder.Services.AddTransient<IValidator<Employees_InputModel>, Employee_InputValidator>();
 
 
 builder.Services.AddSwaggerGen(opt =>
