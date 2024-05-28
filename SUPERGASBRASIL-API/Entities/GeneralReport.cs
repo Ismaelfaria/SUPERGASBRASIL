@@ -8,7 +8,7 @@
         public int SalesValue { get; set; }
         public int RefillKitchenGas { get; set; }
         public int RefillIndustrialGas { get; set; }
-        public DateTime DateGenerated { get; set; }
+        public DateTime DateGenerated { get; set; } = DateTime.Now;
 
         public GeneralReport(int kitchenGasQuantity, int industrialGasQuantity, int salesValue, int refillKitchenGas, int refillIndustrialGas)
         {

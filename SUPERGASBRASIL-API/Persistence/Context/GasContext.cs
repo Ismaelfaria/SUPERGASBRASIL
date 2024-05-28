@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SUPERGASBRASIL_API.Entities;
+using SUPERGASBRASIL_API.Entities.GasStock;
 
 namespace SUPERGASBRASIL_API.Persistence.Context
 {
@@ -12,6 +13,7 @@ namespace SUPERGASBRASIL_API.Persistence.Context
         public DbSet<ClientLegalEntity> ClientLegal { get; set; }
         public DbSet<ClientNaturalPerson> ClientNatural { get; set; }
         public DbSet<GeneralReport> GeneralReport { get; set; }
+        public DbSet<Gas> Gas { get; set; }
         public DbSet<Employees> Employees { get; set; }
         public DbSet<Sales> Sales { get; set; }
 
@@ -123,8 +125,6 @@ namespace SUPERGASBRASIL_API.Persistence.Context
             modelBuilder.Entity<Sales>(c =>
             {
                 c.ToTable("tbl_Vendas");
-                c.Property(e => e.ClientName)
-                 .IsRequired();
                 c.Property(e => e.Quantity)
                  .IsRequired();
                 c.Property(e => e.Type)
