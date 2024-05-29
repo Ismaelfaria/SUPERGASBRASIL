@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SUPERGASBRASIL_API.Entities;
 using SUPERGASBRASIL_API.Entities.GasStock;
+using SUPERGASBRASIL_API.Entities.PIT;
 
 namespace SUPERGASBRASIL_API.Persistence.Context
 {
@@ -13,6 +14,9 @@ namespace SUPERGASBRASIL_API.Persistence.Context
         public DbSet<ClientLegalEntity> ClientLegal { get; set; }
         public DbSet<ClientNaturalPerson> ClientNatural { get; set; }
         public DbSet<GeneralReport> GeneralReport { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Inventory> Inventory { get; set; }
+        public DbSet<Transaction> Transaction { get; set; }
         public DbSet<Gas> Gas { get; set; }
         public DbSet<Employees> Employees { get; set; }
         public DbSet<Sales> Sales { get; set; }
