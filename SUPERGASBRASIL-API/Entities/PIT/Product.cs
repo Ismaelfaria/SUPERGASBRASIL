@@ -17,7 +17,7 @@
         public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
 
         // Propriedade de navegação para Inventory
-        public Inventory Inventory { get; set; }
+        public Inventory Inventoryy { get; set; }
         public bool IsDeleted { get; set; }
 
         public void UpdateProduct(string name, string description, decimal price)

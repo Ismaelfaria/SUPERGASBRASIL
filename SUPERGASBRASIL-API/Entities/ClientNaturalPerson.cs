@@ -9,14 +9,6 @@
         public string CPF { get; set; }
         public bool IsDeleted { get; set; }
 
-        public ClientNaturalPerson(string name, int age, DateTime dateOfBirth, string cpf)
-        {
-            Name = name ?? throw new ArgumentNullException(nameof(name));
-            Age = age;
-            DateOfBirth = dateOfBirth;
-            CPF = cpf;
-            IsDeleted = false;
-        }
         public void Update(string name, int age, DateTime dateOfBirth, string cpf)
         {
             Name = name;

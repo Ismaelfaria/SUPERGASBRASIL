@@ -107,6 +107,7 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                  .IsRequired();
             });
 
+            // Configure the Product entity
             modelBuilder.Entity<Product>(p =>
             {
                 p.ToTable("tbl_Product");
@@ -124,11 +125,12 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                  .WithOne(e => e.Product)
                  .HasForeignKey(e => e.IdProduct);
 
-                p.HasOne(e => e.Inventory)
+                p.HasOne(e => e.Inventoryy)
                  .WithOne(e => e.Product)
                  .HasForeignKey<Inventory>(e => e.IdProduct);
             });
 
+            // Configure the Inventory entity
             modelBuilder.Entity<Inventory>(i =>
             {
                 i.ToTable("tbl_Inventory");
@@ -139,10 +141,12 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                  .IsRequired();
 
                 i.HasOne(e => e.Product)
-                 .WithOne(e => e.Inventory)
-                 .HasForeignKey<Inventory>(e => e.IdProduct);
+                 .WithOne(p => p.Inventoryy)
+                 .HasForeignKey<Inventory>(e => e.IdProduct)
+                 .OnDelete(DeleteBehavior.NoAction);  // Specify NO ACTION on delete
             });
 
+            // Configure the Transaction entity
             modelBuilder.Entity<Transaction>(t =>
             {
                 t.ToTable("tbl_Transaction");
@@ -154,8 +158,7 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                 t.Property(e => e.Quantity)
                  .IsRequired();
                 t.Property(e => e.CreatedAt)
-                 .IsRequired()
-                 .HasColumnType("datetime");
+                 .IsRequired();
 
                 t.HasOne(e => e.Product)
                  .WithMany(e => e.Transactions)

@@ -8,7 +8,6 @@
         }
         public Guid IdInventory { get; set; }
         public Guid IdProduct { get; set; }
-        public Product product { get; set; }
         public int Quantity { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; }

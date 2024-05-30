@@ -12,8 +12,6 @@ namespace SUPERGASBRASIL_API.Mappers.Profiles
             CreateMap<ClientLegalEntity, ClientLegal_InputModel>().ReverseMap();
             CreateMap<ClientNaturalPerson, ClientNatural_InputModel>().ReverseMap();
             CreateMap<Employees, Employees_InputModel>().ReverseMap();
-            CreateMap<GeneralReport, GeneralReport_InputModel>().ReverseMap();
-            CreateMap<Sales, Sales_InputModel>().ReverseMap();
         }
     }
 }
