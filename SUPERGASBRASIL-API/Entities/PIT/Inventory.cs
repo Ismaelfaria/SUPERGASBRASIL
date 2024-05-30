@@ -12,6 +12,9 @@
         public int Quantity { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; }
+
+        // Propriedade de navegação para Product
+        public Product Product { get; set; }
         public bool IsDeleted { get; set; }
 
         public void UpdateInventory(Guid idProduct, int quantity)

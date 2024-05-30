@@ -12,6 +12,12 @@
         public decimal Price { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; }
+
+        // Propriedade de navegação para Transactions
+        public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
+
+        // Propriedade de navegação para Inventory
+        public Inventory Inventory { get; set; }
         public bool IsDeleted { get; set; }
 
         public void UpdateProduct(string name, string description, decimal price)

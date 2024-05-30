@@ -11,11 +11,13 @@ namespace SUPERGASBRASIL_API.Entities.PIT
         }
         public Guid IdTransaction { get; set; }
         public Guid IdProduct { get; set; }
-        public Product Product { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public ETransactionINorOUT Type { get; set; }
         public int Quantity { get; set; }
+
+        // Propriedade de navegação para Product
+        public Product Product { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public bool IsDeleted { get; set; }
 
