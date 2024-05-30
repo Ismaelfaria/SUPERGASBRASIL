@@ -8,6 +8,5 @@ namespace SUPERGASBRASIL_API.Repositories.Interfaces.PIT_RepositoryInterfaces
         void DeleteTransaction(Guid id);
         IEnumerable<Transaction> FindAll();
         Transaction FindByIdTransaction(Guid id);
-        void UpdateTransaction(Guid id, Transaction product);
     }
 }

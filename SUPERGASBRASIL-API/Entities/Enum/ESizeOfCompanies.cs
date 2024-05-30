@@ -1,6 +1,6 @@
 ﻿namespace SUPERGASBRASIL_API.Entities.Enum
 {
-    public enum SizeOfCompanies
+    public enum ESizeOfCompanies
     {
         MEI,
         ME,

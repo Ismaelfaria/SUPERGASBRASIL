@@ -12,12 +12,12 @@ namespace SUPERGASBRASIL_API.Entities
         public DateTime DateOfBirth { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public Positions Position { get; set; }
+        public EPositions Position { get; set; }
         public decimal Salary { get; set; }
         public DateTime HireDate { get; set; }
         public bool IsDeleted { get; set; }
 
-        public Employees(string cpf, string name, int age, DateTime dateOfBirth, Positions position, decimal salary, DateTime hireDate)
+        public Employees(string cpf, string name, int age, DateTime dateOfBirth, EPositions position, decimal salary, DateTime hireDate)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             Age = age;
@@ -32,7 +32,7 @@ namespace SUPERGASBRASIL_API.Entities
         {
             IsDeleted = true;
         }
-        public void Update(string cpf, string name, int age, DateTime dateOfBirth, Positions position, decimal salary, DateTime hireDate)
+        public void Update(string cpf, string name, int age, DateTime dateOfBirth, EPositions position, decimal salary, DateTime hireDate)
         {
             Cpf = cpf;
             Name = name;

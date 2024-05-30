@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SUPERGASBRASIL_API.Entities;
-using SUPERGASBRASIL_API.Entities.GasStock;
 using SUPERGASBRASIL_API.Entities.PIT;
 
 namespace SUPERGASBRASIL_API.Persistence.Context
@@ -13,13 +12,10 @@ namespace SUPERGASBRASIL_API.Persistence.Context
         public DbSet<Admin> Admin { get; set; }
         public DbSet<ClientLegalEntity> ClientLegal { get; set; }
         public DbSet<ClientNaturalPerson> ClientNatural { get; set; }
-        public DbSet<GeneralReport> GeneralReport { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Inventory> Inventory { get; set; }
         public DbSet<Transaction> Transaction { get; set; }
-        public DbSet<Gas> Gas { get; set; }
         public DbSet<Employees> Employees { get; set; }
-        public DbSet<Sales> Sales { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -111,30 +107,59 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                  .IsRequired();
             });
 
-            modelBuilder.Entity<GeneralReport>(c =>
+            modelBuilder.Entity<Product>(p =>
             {
-                c.ToTable("tbl_Relatorio");
-                c.Property(e => e.KitchenGasQuantity)
-                 .IsRequired();
-                c.Property(e => e.IndustrialGasQuantity)
-                 .IsRequired();
-                c.Property(e => e.SalesValue)
-                 .IsRequired();
-                c.Property(e => e.RefillKitchenGas)
-                 .IsRequired();
-                c.Property(e => e.RefillIndustrialGas)
-                 .IsRequired();
+                p.ToTable("tbl_Product");
+                p.HasKey(e => e.IdProduct);
+                p.Property(e => e.Name)
+                 .IsRequired()
+                 .HasMaxLength(100);
+                p.Property(e => e.Description)
+                 .HasMaxLength(500);
+                p.Property(e => e.Price)
+                 .IsRequired()
+                 .HasColumnType("decimal(18,2)");
+
+                p.HasMany(e => e.Transactions)
+                 .WithOne(e => e.Product)
+                 .HasForeignKey(e => e.IdProduct);
+
+                p.HasOne(e => e.Inventory)
+                 .WithOne(e => e.Product)
+                 .HasForeignKey<Inventory>(e => e.IdProduct);
             });
 
-            modelBuilder.Entity<Sales>(c =>
+            modelBuilder.Entity<Inventory>(i =>
             {
-                c.ToTable("tbl_Vendas");
-                c.Property(e => e.Quantity)
+                i.ToTable("tbl_Inventory");
+                i.HasKey(e => e.IdInventory);
+                i.Property(e => e.IdProduct)
                  .IsRequired();
-                c.Property(e => e.Type)
+                i.Property(e => e.Quantity)
                  .IsRequired();
-                c.Property(e => e.TimeOfSale)
+
+                i.HasOne(e => e.Product)
+                 .WithOne(e => e.Inventory)
+                 .HasForeignKey<Inventory>(e => e.IdProduct);
+            });
+
+            modelBuilder.Entity<Transaction>(t =>
+            {
+                t.ToTable("tbl_Transaction");
+                t.HasKey(e => e.IdTransaction);
+                t.Property(e => e.IdProduct)
                  .IsRequired();
+                t.Property(e => e.Type)
+                 .IsRequired();
+                t.Property(e => e.Quantity)
+                 .IsRequired();
+                t.Property(e => e.CreatedAt)
+                 .IsRequired()
+                 .HasColumnType("datetime");
+
+                t.HasOne(e => e.Product)
+                 .WithMany(e => e.Transactions)
+                 .HasForeignKey(e => e.IdProduct);
             });
         }
 

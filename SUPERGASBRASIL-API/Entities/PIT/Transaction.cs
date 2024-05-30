@@ -14,7 +14,7 @@ namespace SUPERGASBRASIL_API.Entities.PIT
         public Product Product { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public TransactionINorOUT Type { get; set; }
+        public ETransactionINorOUT Type { get; set; }
         public int Quantity { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public bool IsDeleted { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace SUPERGASBRASIL_API.Entities.Enum
 {
-    public enum TransactionINorOUT
+    public enum ETransactionINorOUT
     {
         IN,
         OUT

@@ -1,6 +1,6 @@
 ﻿namespace SUPERGASBRASIL_API.Entities.Enum
 {
-    public enum TypeOfGas
+    public enum ETypeOfGas
     {
         INDUSTRIAL,
         CASA

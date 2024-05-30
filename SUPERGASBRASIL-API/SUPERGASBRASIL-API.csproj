@@ -20,11 +20,6 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Interfaces\PIT-ServicesInterfaces\" />
-    <Folder Include="Services\ServicesImplementation\PIT-Services\" />
-  </ItemGroup>
-
 	<PropertyGroup>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);1591</NoWarn>

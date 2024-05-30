@@ -1,9 +1,10 @@
 ﻿using SUPERGASBRASIL_API.Entities.PIT;
 using SUPERGASBRASIL_API.Persistence.Context;
+using SUPERGASBRASIL_API.Repositories.Interfaces.PIT_RepositoryInterfaces;
 
 namespace SUPERGASBRASIL_API.Repositories.Repositorios.PIT_Repository
 {
-    public class TransactionRepository
+    public class TransactionRepository : ITransactionRepository
     {
         private readonly GasContext _context;
 
@@ -15,6 +16,7 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.PIT_Repository
         public Transaction CreateTransaction(Transaction transaction)
         {
             _context.Transaction.Add(transaction);
+
             _context.SaveChanges();
 
             return transaction;

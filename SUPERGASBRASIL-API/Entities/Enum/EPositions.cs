@@ -1,6 +1,6 @@
 ﻿namespace SUPERGASBRASIL_API.Entities.Enum
 {
-    public enum Positions
+    public enum EPositions
     {
         Gerente,
         Secretaria,

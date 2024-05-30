@@ -46,11 +46,11 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios
 
             return userDatabase;
         }
-        public void UpdateInventory(Guid Id, Inventory inventory)
+        public void UpdateInventory(Guid Id, int qtd)
         {
             var userDatabase = _context.Inventory.SingleOrDefault(a => a.IdProduct == Id);
 
-            userDatabase.UpdateInventory(inventory.IdProduct, inventory.Product, inventory.Quantity);
+            userDatabase.UpdateInventory(userDatabase.IdProduct, qtd);
             _context.SaveChanges();
         }
     }
