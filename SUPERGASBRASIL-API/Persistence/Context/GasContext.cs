@@ -107,62 +107,54 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                  .IsRequired();
             });
 
-            // Configure the Product entity
             modelBuilder.Entity<Product>(p =>
             {
                 p.ToTable("tbl_Product");
                 p.HasKey(e => e.IdProduct);
                 p.Property(e => e.Name)
-                 .IsRequired()
-                 .HasMaxLength(100);
+                    .IsRequired()
+                    .HasMaxLength(100);
                 p.Property(e => e.Description)
-                 .HasMaxLength(500);
+                    .HasMaxLength(500);
                 p.Property(e => e.Price)
-                 .IsRequired()
-                 .HasColumnType("decimal(18,2)");
+                    .IsRequired()
+                    .HasColumnType("decimal(18,2)");
 
                 p.HasMany(e => e.Transactions)
-                 .WithOne(e => e.Product)
-                 .HasForeignKey(e => e.IdProduct);
-
-                p.HasOne(e => e.Inventoryy)
-                 .WithOne(e => e.Product)
-                 .HasForeignKey<Inventory>(e => e.IdProduct);
+                    .WithOne(e => e.Product)
+                    .HasForeignKey(e => e.IdProduct);
             });
 
-            // Configure the Inventory entity
+            // Configuração da entidade Inventory
             modelBuilder.Entity<Inventory>(i =>
             {
                 i.ToTable("tbl_Inventory");
                 i.HasKey(e => e.IdInventory);
-                i.Property(e => e.IdProduct)
-                 .IsRequired();
                 i.Property(e => e.Quantity)
-                 .IsRequired();
+                    .IsRequired();
 
                 i.HasOne(e => e.Product)
-                 .WithOne(p => p.Inventoryy)
-                 .HasForeignKey<Inventory>(e => e.IdProduct)
-                 .OnDelete(DeleteBehavior.NoAction);  // Specify NO ACTION on delete
+                    .WithOne(e => e.Inventoryy)
+                    .HasForeignKey<Product>(e => e.IdProduct);
             });
 
-            // Configure the Transaction entity
+            // Configuração da entidade Transaction
             modelBuilder.Entity<Transaction>(t =>
             {
                 t.ToTable("tbl_Transaction");
                 t.HasKey(e => e.IdTransaction);
                 t.Property(e => e.IdProduct)
-                 .IsRequired();
+                    .IsRequired();
                 t.Property(e => e.Type)
-                 .IsRequired();
+                    .IsRequired();
                 t.Property(e => e.Quantity)
-                 .IsRequired();
+                    .IsRequired();
                 t.Property(e => e.CreatedAt)
-                 .IsRequired();
+                    .IsRequired();
 
                 t.HasOne(e => e.Product)
-                 .WithMany(e => e.Transactions)
-                 .HasForeignKey(e => e.IdProduct);
+                    .WithMany(e => e.Transactions)
+                    .HasForeignKey(e => e.IdProduct);
             });
         }
 

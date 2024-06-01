@@ -18,6 +18,7 @@ namespace SUPERGASBRASIL_API.Entities.PIT
 
         // Propriedade de navegação para Product
         public Product Product { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public bool IsDeleted { get; set; }
 

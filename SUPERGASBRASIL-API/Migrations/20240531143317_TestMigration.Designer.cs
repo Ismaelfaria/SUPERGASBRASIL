@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SUPERGASBRASIL_API.Persistence.Context;
 
@@ -11,9 +12,11 @@ using SUPERGASBRASIL_API.Persistence.Context;
 namespace SUPERGASBRASIL_API.Migrations
 {
     [DbContext(typeof(GasContext))]
-    partial class GasContextModelSnapshot : ModelSnapshot
+    [Migration("20240531143317_TestMigration")]
+    partial class TestMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,12 +181,16 @@ namespace SUPERGASBRASIL_API.Migrations
 
                     b.HasKey("IdInventory");
 
+                    b.HasIndex("IdProduct")
+                        .IsUnique();
+
                     b.ToTable("tbl_Inventory", (string)null);
                 });
 
             modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Product", b =>
                 {
                     b.Property<Guid>("IdProduct")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
@@ -241,15 +248,15 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.ToTable("tbl_Transaction", (string)null);
                 });
 
-            modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Product", b =>
+            modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Inventory", b =>
                 {
-                    b.HasOne("SUPERGASBRASIL_API.Entities.PIT.Inventory", "Inventoryy")
-                        .WithOne("Product")
-                        .HasForeignKey("SUPERGASBRASIL_API.Entities.PIT.Product", "IdProduct")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("SUPERGASBRASIL_API.Entities.PIT.Product", "Product")
+                        .WithOne("Inventoryy")
+                        .HasForeignKey("SUPERGASBRASIL_API.Entities.PIT.Inventory", "IdProduct")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("Inventoryy");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Transaction", b =>
@@ -263,14 +270,11 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Inventory", b =>
-                {
-                    b.Navigation("Product")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Product", b =>
                 {
+                    b.Navigation("Inventoryy")
+                        .IsRequired();
+
                     b.Navigation("Transactions");
                 });
 #pragma warning restore 612, 618
