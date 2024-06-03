@@ -6,6 +6,7 @@ namespace SUPERGASBRASIL_API.Entities
 {
     public class ClientLegalEntity
     {
+
         public Guid IdClientLegalEntity { get; set; }
         public string CompanyName { get; set; }
 
