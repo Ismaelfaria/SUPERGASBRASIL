@@ -12,7 +12,6 @@
         public decimal Price { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; }
-        public ICollection<Transaction> Transactions { get; set; }
         public Inventory Inventoryy { get; set; }
         public bool IsDeleted { get; set; }
 

@@ -26,9 +26,11 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                 a.ToTable("tbl_Admin");
                 a.HasKey(e => e.IdAdmin);
                 a.Property(e => e.Username)
+                .HasColumnName("NomeAdm")
                   .IsRequired()
                   .HasMaxLength(50);
                 a.Property(e => e.Password)
+                .HasColumnName("senha")
                   .IsRequired()
                   .HasMaxLength(8);
             });
@@ -38,18 +40,23 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                 c.ToTable("tbl_ClientJuridico");
                 c.HasKey(e => e.IdClientLegalEntity);
                 c.Property(e => e.CompanyName)
+                .HasColumnName("nome_Empresa")
                  .IsRequired()
                  .HasMaxLength(100);
                 c.Property(e => e.TypeOfCompany)
+                .HasColumnName("tipo")
                  .IsRequired()
                  .HasMaxLength(100);
                 c.Property(e => e.BusinessAddress)
+                .HasColumnName("endereço")
                  .IsRequired()
                  .HasMaxLength(100);
                 c.Property(e => e.TaxIdentificationNumberCNPJ)
+                .HasColumnName("cnpj")
                  .IsRequired()
                  .HasMaxLength(11);
                 c.Property(e => e.ContactInformation)
+                .HasColumnName("contato")
                  .IsRequired()
                  .HasMaxLength(11);
             });
@@ -59,31 +66,18 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                 c.ToTable("tbl_ClientFisico");
                 c.HasKey(e => e.IdClientNaturalPerson);
                 c.Property(e => e.Name)
+                .HasColumnName("nome_client")
                  .IsRequired()
                  .HasMaxLength(100);
                 c.Property(e => e.Age)
+                .HasColumnName("idade")
                  .IsRequired()
                  .HasMaxLength(100);
                 c.Property(e => e.DateOfBirth)
+                .HasColumnName("data_nascimento")
                  .IsRequired();
                 c.Property(e => e.CPF)
-                 .IsRequired()
-                 .HasMaxLength(11);
-            });
-
-            modelBuilder.Entity<ClientNaturalPerson>(c =>
-            {
-                c.ToTable("tbl_ClientFisico");
-                c.HasKey(e => e.IdClientNaturalPerson);
-                c.Property(e => e.Name)
-                 .IsRequired()
-                 .HasMaxLength(100);
-                c.Property(e => e.Age)
-                 .IsRequired()
-                 .HasMaxLength(100);
-                c.Property(e => e.DateOfBirth)
-                 .IsRequired();
-                c.Property(e => e.CPF)
+                .HasColumnName("cpf")
                  .IsRequired()
                  .HasMaxLength(11);
             });
@@ -93,17 +87,22 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                 c.ToTable("tbl_Funcionarios");
                 c.HasKey(e => e.IdEmployees);
                 c.Property(e => e.Name)
+                .HasColumnName("nome_funcionario")
                  .IsRequired()
                  .HasMaxLength(100);
                 c.Property(e => e.Age)
+                .HasColumnName("idade")
                  .IsRequired()
                  .HasMaxLength(100);
                 c.Property(e => e.DateOfBirth)
+                .HasColumnName("data_nascimento")
                  .IsRequired();
                 c.Property(e => e.Salary)
+                .HasColumnName("salario")
                  .IsRequired()
                  .HasMaxLength(11);
                 c.Property(e => e.HireDate)
+                .HasColumnName("data_entrada")
                  .IsRequired();
             });
 
@@ -112,49 +111,60 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                 p.ToTable("tbl_Product");
                 p.HasKey(e => e.IdProduct);
                 p.Property(e => e.Name)
+                .HasColumnName("nome_Produto")
                     .IsRequired()
                     .HasMaxLength(100);
                 p.Property(e => e.Description)
+                .HasColumnName("descrição")
                     .HasMaxLength(500);
                 p.Property(e => e.Price)
+                .HasColumnName("valor")
                     .IsRequired()
                     .HasColumnType("decimal(18,2)");
-
-                p.HasMany(e => e.Transactions)
-                    .WithOne(e => e.Product)
-                    .HasForeignKey(e => e.IdProduct);
+                p.Property(e => e.CreatedAt)
+                .HasColumnName("data_Criação");
+                p.Property(e => e.UpdatedAt)
+                .HasColumnName("data_Atualização");
+                p.HasOne(a => a.Inventoryy)
+                .WithOne(b => b.Product)
+                .HasForeignKey<Inventory>(b => b.IdProduct);
             });
 
-            // Configuração da entidade Inventory
             modelBuilder.Entity<Inventory>(i =>
             {
                 i.ToTable("tbl_Inventory");
                 i.HasKey(e => e.IdInventory);
                 i.Property(e => e.Quantity)
+                .HasColumnName("quantidadeEstoque")
                     .IsRequired();
-
-                i.HasOne(e => e.Product)
-                    .WithOne(e => e.Inventoryy)
-                    .HasForeignKey<Product>(e => e.IdProduct);
+                i.Property(e => e.CreatedAt)
+                .HasColumnName("data_Criação");
+                i.Property(e => e.UpdatedAt)
+                .HasColumnName("data_Atualização");
+                i.HasMany(b => b.Transactions)
+                .WithOne(c => c.Inventoryy)
+                .HasForeignKey(c => c.IdInventary);
             });
 
-            // Configuração da entidade Transaction
             modelBuilder.Entity<Transaction>(t =>
             {
                 t.ToTable("tbl_Transaction");
                 t.HasKey(e => e.IdTransaction);
-                t.Property(e => e.IdProduct)
+                t.Property(e => e.IdTransaction)
+                .HasColumnName("transação")
                     .IsRequired();
                 t.Property(e => e.Type)
+                .HasColumnName("tipo")
                     .IsRequired();
                 t.Property(e => e.Quantity)
+                .HasColumnName("quantidade")
                     .IsRequired();
                 t.Property(e => e.CreatedAt)
+                .HasColumnName("data_Criação")
                     .IsRequired();
-
-                t.HasOne(e => e.Product)
-                    .WithMany(e => e.Transactions)
-                    .HasForeignKey(e => e.IdProduct);
+                t.Property(e => e.CreatedAt)
+                .HasColumnName("data_Transação");
+                
             });
         }
 

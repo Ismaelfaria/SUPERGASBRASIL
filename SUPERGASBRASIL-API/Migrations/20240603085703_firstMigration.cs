@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SUPERGASBRASIL_API.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstMigrationControllersCheck : Migration
+    public partial class firstMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -99,8 +99,7 @@ namespace SUPERGASBRASIL_API.Migrations
                 columns: table => new
                 {
                     IdInventory = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IdProduct = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    productIdProduct = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdProduct = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -113,14 +112,7 @@ namespace SUPERGASBRASIL_API.Migrations
                         name: "FK_tbl_Inventory_tbl_Product_IdProduct",
                         column: x => x.IdProduct,
                         principalTable: "tbl_Product",
-                        principalColumn: "IdProduct",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_tbl_Inventory_tbl_Product_productIdProduct",
-                        column: x => x.productIdProduct,
-                        principalTable: "tbl_Product",
-                        principalColumn: "IdProduct",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "IdProduct");
                 });
 
             migrationBuilder.CreateTable(
@@ -128,20 +120,21 @@ namespace SUPERGASBRASIL_API.Migrations
                 columns: table => new
                 {
                     IdTransaction = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdInventary = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IdProduct = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tbl_Transaction", x => x.IdTransaction);
                     table.ForeignKey(
-                        name: "FK_tbl_Transaction_tbl_Product_IdProduct",
-                        column: x => x.IdProduct,
-                        principalTable: "tbl_Product",
-                        principalColumn: "IdProduct",
+                        name: "FK_tbl_Transaction_tbl_Inventory_IdInventary",
+                        column: x => x.IdInventary,
+                        principalTable: "tbl_Inventory",
+                        principalColumn: "IdInventory",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -149,17 +142,13 @@ namespace SUPERGASBRASIL_API.Migrations
                 name: "IX_tbl_Inventory_IdProduct",
                 table: "tbl_Inventory",
                 column: "IdProduct",
-                unique: true);
+                unique: true,
+                filter: "[IdProduct] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_Inventory_productIdProduct",
-                table: "tbl_Inventory",
-                column: "productIdProduct");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_tbl_Transaction_IdProduct",
+                name: "IX_tbl_Transaction_IdInventary",
                 table: "tbl_Transaction",
-                column: "IdProduct");
+                column: "IdInventary");
         }
 
         /// <inheritdoc />
@@ -178,10 +167,10 @@ namespace SUPERGASBRASIL_API.Migrations
                 name: "tbl_Funcionarios");
 
             migrationBuilder.DropTable(
-                name: "tbl_Inventory");
+                name: "tbl_Transaction");
 
             migrationBuilder.DropTable(
-                name: "tbl_Transaction");
+                name: "tbl_Inventory");
 
             migrationBuilder.DropTable(
                 name: "tbl_Product");

@@ -12,8 +12,8 @@ using SUPERGASBRASIL_API.Persistence.Context;
 namespace SUPERGASBRASIL_API.Migrations
 {
     [DbContext(typeof(GasContext))]
-    [Migration("20240601103351_Test4Migration")]
-    partial class Test4Migration
+    [Migration("20240603091724_GasMigration")]
+    partial class GasMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,12 +37,14 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                        .HasColumnType("nvarchar(8)")
+                        .HasColumnName("senha");
 
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("NomeAdm");
 
                     b.HasKey("IdAdmin");
 
@@ -58,17 +60,20 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.Property<string>("BusinessAddress")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("endereço");
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("nome_Empresa");
 
                     b.Property<string>("ContactInformation")
                         .IsRequired()
                         .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasColumnType("nvarchar(11)")
+                        .HasColumnName("contato");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -76,11 +81,13 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.Property<string>("TaxIdentificationNumberCNPJ")
                         .IsRequired()
                         .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasColumnType("nvarchar(11)")
+                        .HasColumnName("cnpj");
 
                     b.Property<int>("TypeOfCompany")
                         .HasMaxLength(100)
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("tipo");
 
                     b.HasKey("IdClientLegalEntity");
 
@@ -95,15 +102,18 @@ namespace SUPERGASBRASIL_API.Migrations
 
                     b.Property<int>("Age")
                         .HasMaxLength(100)
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("idade");
 
                     b.Property<string>("CPF")
                         .IsRequired()
                         .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasColumnType("nvarchar(11)")
+                        .HasColumnName("cpf");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("data_nascimento");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -111,7 +121,8 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("nome_client");
 
                     b.HasKey("IdClientNaturalPerson");
 
@@ -126,17 +137,20 @@ namespace SUPERGASBRASIL_API.Migrations
 
                     b.Property<int>("Age")
                         .HasMaxLength(100)
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("idade");
 
                     b.Property<string>("Cpf")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("data_nascimento");
 
                     b.Property<DateTime>("HireDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("data_entrada");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -144,14 +158,16 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("nome_funcionario");
 
                     b.Property<int>("Position")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Salary")
                         .HasMaxLength(11)
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("salario");
 
                     b.HasKey("IdEmployees");
 
@@ -165,24 +181,28 @@ namespace SUPERGASBRASIL_API.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("data_Criação");
 
-                    b.Property<Guid>("IdProduct")
+                    b.Property<Guid?>("IdProduct")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("quantidadeEstoque");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("data_Atualização");
 
                     b.HasKey("IdInventory");
 
                     b.HasIndex("IdProduct")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[IdProduct] IS NOT NULL");
 
                     b.ToTable("tbl_Inventory", (string)null);
                 });
@@ -194,12 +214,14 @@ namespace SUPERGASBRASIL_API.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("data_Criação");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(500)")
+                        .HasColumnName("descrição");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -207,13 +229,16 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("nome_Produto");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("valor");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("data_Atualização");
 
                     b.HasKey("IdProduct");
 
@@ -224,10 +249,15 @@ namespace SUPERGASBRASIL_API.Migrations
                 {
                     b.Property<Guid>("IdTransaction")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("transação");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("data_Transação");
+
+                    b.Property<Guid>("IdInventary")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("IdProduct")
                         .HasColumnType("uniqueidentifier");
@@ -236,14 +266,16 @@ namespace SUPERGASBRASIL_API.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("quantidade");
 
                     b.Property<int>("Type")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("tipo");
 
                     b.HasKey("IdTransaction");
 
-                    b.HasIndex("IdProduct");
+                    b.HasIndex("IdInventary");
 
                     b.ToTable("tbl_Transaction", (string)null);
                 });
@@ -252,30 +284,31 @@ namespace SUPERGASBRASIL_API.Migrations
                 {
                     b.HasOne("SUPERGASBRASIL_API.Entities.PIT.Product", "Product")
                         .WithOne("Inventoryy")
-                        .HasForeignKey("SUPERGASBRASIL_API.Entities.PIT.Inventory", "IdProduct")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SUPERGASBRASIL_API.Entities.PIT.Inventory", "IdProduct");
 
                     b.Navigation("Product");
                 });
 
             modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Transaction", b =>
                 {
-                    b.HasOne("SUPERGASBRASIL_API.Entities.PIT.Product", "Product")
+                    b.HasOne("SUPERGASBRASIL_API.Entities.PIT.Inventory", "Inventoryy")
                         .WithMany("Transactions")
-                        .HasForeignKey("IdProduct")
+                        .HasForeignKey("IdInventary")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("Inventoryy");
+                });
+
+            modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Inventory", b =>
+                {
+                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Product", b =>
                 {
                     b.Navigation("Inventoryy")
                         .IsRequired();
-
-                    b.Navigation("Transactions");
                 });
 #pragma warning restore 612, 618
         }

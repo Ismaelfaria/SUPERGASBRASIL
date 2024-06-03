@@ -15,6 +15,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
 
         public Inventory CreateInventory(Inventory inventory)
         {
+
             _inv.CreateInventory(inventory);
 
             return inventory;

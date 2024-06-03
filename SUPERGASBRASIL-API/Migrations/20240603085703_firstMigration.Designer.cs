@@ -12,8 +12,8 @@ using SUPERGASBRASIL_API.Persistence.Context;
 namespace SUPERGASBRASIL_API.Migrations
 {
     [DbContext(typeof(GasContext))]
-    [Migration("20240531143742_Test2Migration")]
-    partial class Test2Migration
+    [Migration("20240603085703_firstMigration")]
+    partial class firstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -167,7 +167,7 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("IdProduct")
+                    b.Property<Guid?>("IdProduct")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -182,7 +182,8 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.HasKey("IdInventory");
 
                     b.HasIndex("IdProduct")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[IdProduct] IS NOT NULL");
 
                     b.ToTable("tbl_Inventory", (string)null);
                 });
@@ -229,6 +230,9 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("IdInventary")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("IdProduct")
                         .HasColumnType("uniqueidentifier");
 
@@ -243,7 +247,7 @@ namespace SUPERGASBRASIL_API.Migrations
 
                     b.HasKey("IdTransaction");
 
-                    b.HasIndex("IdProduct");
+                    b.HasIndex("IdInventary");
 
                     b.ToTable("tbl_Transaction", (string)null);
                 });
@@ -252,30 +256,31 @@ namespace SUPERGASBRASIL_API.Migrations
                 {
                     b.HasOne("SUPERGASBRASIL_API.Entities.PIT.Product", "Product")
                         .WithOne("Inventoryy")
-                        .HasForeignKey("SUPERGASBRASIL_API.Entities.PIT.Inventory", "IdProduct")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SUPERGASBRASIL_API.Entities.PIT.Inventory", "IdProduct");
 
                     b.Navigation("Product");
                 });
 
             modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Transaction", b =>
                 {
-                    b.HasOne("SUPERGASBRASIL_API.Entities.PIT.Product", "Product")
+                    b.HasOne("SUPERGASBRASIL_API.Entities.PIT.Inventory", "Inventoryy")
                         .WithMany("Transactions")
-                        .HasForeignKey("IdProduct")
+                        .HasForeignKey("IdInventary")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("Inventoryy");
+                });
+
+            modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Inventory", b =>
+                {
+                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Product", b =>
                 {
                     b.Navigation("Inventoryy")
                         .IsRequired();
-
-                    b.Navigation("Transactions");
                 });
 #pragma warning restore 612, 618
         }
