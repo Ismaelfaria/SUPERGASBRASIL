@@ -15,6 +15,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
 
         public Admin CreateAdmin(Admin admin)
         {
+            admin.IdAdmin = Guid.NewGuid();
 
             var createdItem = Admin.CreateAdmin(admin);
 

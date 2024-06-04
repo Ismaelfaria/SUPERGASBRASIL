@@ -31,6 +31,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
 
             var createMapObject = mapper.Map<Employees>(employee);
 
+            createMapObject.IdEmployees = Guid.NewGuid();
+
             Employee.CreateEmployee(createMapObject);
 
             return createMapObject;

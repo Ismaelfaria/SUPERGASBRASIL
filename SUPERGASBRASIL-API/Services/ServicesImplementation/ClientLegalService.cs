@@ -33,6 +33,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
 
             var createMapObject = mapper.Map<ClientLegalEntity>(clientLegal);
 
+            createMapObject.IdClientLegalEntity = Guid.NewGuid();
+
             client.CreateClientLegal(createMapObject);
 
             return createMapObject;

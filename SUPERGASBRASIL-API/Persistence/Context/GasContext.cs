@@ -10,6 +10,7 @@ namespace SUPERGASBRASIL_API.Persistence.Context
         { }
 
         public DbSet<Admin> Admin { get; set; }
+        public DbSet<User> User { get; set; }
         public DbSet<ClientLegalEntity> ClientLegal { get; set; }
         public DbSet<ClientNaturalPerson> ClientNatural { get; set; }
         public DbSet<Product> Product { get; set; }
