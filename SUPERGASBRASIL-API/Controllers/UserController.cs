@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SUPERGASBRASIL_API.Entities;
+using SUPERGASBRASIL_API.Mappers.Models.InputModel;
 using SUPERGASBRASIL_API.Services.Interfaces;
 
 namespace SUPERGASBRASIL_API.Controllers
@@ -10,10 +12,12 @@ namespace SUPERGASBRASIL_API.Controllers
     public class UserController : ControllerBase
     {
         public readonly IUserService _user;
+        public readonly IMapper _mapper;
 
-        public UserController(IUserService user)
+        public UserController(IUserService user, IMapper mapper)
         {
             _user = user;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -23,7 +27,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// <response code="201">Retorna o novo item criado</response>
         /// <response code="500">Se o item não for criado</response> 
         [HttpPost]
-        public IActionResult CriarRegistro([FromForm] User user)
+        public IActionResult CriarRegistro([FromForm] Login_InputModel user)
         {
             try
             {

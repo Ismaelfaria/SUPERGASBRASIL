@@ -1,5 +1,7 @@
-﻿using SUPERGASBRASIL_API.Entities;
+﻿using AutoMapper;
+using SUPERGASBRASIL_API.Entities;
 using SUPERGASBRASIL_API.Entities.Enum;
+using SUPERGASBRASIL_API.Mappers.Models.InputModel;
 using SUPERGASBRASIL_API.Repositories.Interfaces;
 using SUPERGASBRASIL_API.Services.Interfaces;
 
@@ -8,29 +10,34 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
     public class UserService : IUserService
     {
         private readonly IUserRepository _user;
+        private readonly IMapper _mapper;
 
-        public UserService(IUserRepository user)
+        public UserService(IUserRepository user, IMapper mapper)
         {
             _user = user;
+            _mapper = mapper;
         }
 
-        public User Create(User user)
+        public User Create(Login_InputModel user)
         {
-            switch (user.Role)
+            var createMapObject = _mapper.Map<User>(user);
+
+
+            switch (createMapObject.Role)
             {
                 case ERole.ADM:
-                    user.Roles = "Admin";
+                    createMapObject.Roles = "Admin";
                     break;
 
                 case ERole.SECRETARIA:
-                    user.Roles = "Secretaria";
+                    createMapObject.Roles = "Secretaria";
                     break;
 
             }
-            user.Id = Guid.NewGuid();
-            var createdItem = _user.Create(user);
+            createMapObject.Id = Guid.NewGuid();
+            var createdItem = _user.Create(createMapObject);
 
-            return createdItem;
+            return createMapObject;
         }
         public void Delete(Guid id)
         {
