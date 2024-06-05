@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace SUPERGASBRASIL_API.Mappers.Models.InputModel
 {
-    public class Login_InputModel
+    public class User_InputModel
     {
         public string Username { get; set; }
         public string Password { get; set; }

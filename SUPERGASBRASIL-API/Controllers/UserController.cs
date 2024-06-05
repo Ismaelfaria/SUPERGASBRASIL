@@ -27,7 +27,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// <response code="201">Retorna o novo item criado</response>
         /// <response code="500">Se o item não for criado</response> 
         [HttpPost]
-        public IActionResult CriarRegistro([FromForm] Login_InputModel user)
+        public IActionResult CriarRegistro([FromForm] User_InputModel user)
         {
             try
             {

@@ -32,14 +32,14 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
 
         public void ProcessTransaction(Guid productId, ETransactionINorOUT type, int quantity)
         {
-            var product =  _productRepository.FindByIdProduct(productId);
+            var product = _productRepository.FindByIdProduct(productId);
 
             if (product == null)
             {
                 throw new Exception("Product not found");
             }
 
-            var inventory =  _inventoryRepository.FindByIdInventory(productId);
+            var inventory = _inventoryRepository.FindByIdInventory(productId);
 
             if (inventory == null)
             {

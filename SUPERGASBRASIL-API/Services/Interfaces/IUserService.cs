@@ -5,7 +5,7 @@ namespace SUPERGASBRASIL_API.Services.Interfaces
 {
     public interface IUserService
     {
-        User Create(Login_InputModel user);
+        User Create(User_InputModel user);
         void Delete(Guid id);
         IEnumerable<User> FindAll();
         User FindByUserName(string name);

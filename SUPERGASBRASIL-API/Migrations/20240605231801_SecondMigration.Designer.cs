@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SUPERGASBRASIL_API.Persistence.Context;
 
@@ -11,9 +12,11 @@ using SUPERGASBRASIL_API.Persistence.Context;
 namespace SUPERGASBRASIL_API.Migrations
 {
     [DbContext(typeof(GasContext))]
-    partial class GasContextModelSnapshot : ModelSnapshot
+    [Migration("20240605231801_SecondMigration")]
+    partial class SecondMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,9 +69,10 @@ namespace SUPERGASBRASIL_API.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("nome_Empresa");
 
-                    b.Property<int>("ContactInformation")
+                    b.Property<string>("ContactInformation")
+                        .IsRequired()
                         .HasMaxLength(11)
-                        .HasColumnType("int")
+                        .HasColumnType("nvarchar(11)")
                         .HasColumnName("contato");
 
                     b.Property<bool>("IsDeleted")

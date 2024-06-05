@@ -13,19 +13,12 @@ namespace SUPERGASBRASIL_API.Validators
 
             RuleFor(a => a.ContactInformation)
                 .NotEmpty()
-                .WithMessage("O nome do Admin não pode ser vazio")
-                .Matches(@"^\(\d{2}\) \d{4,5}-\d{4}$")
                 .WithMessage("O número de telefone deve estar no formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX.");
             
             RuleFor(a => a.TaxIdentificationNumberCNPJ)
                 .NotEmpty()
-                .WithMessage("O nome da empresa não pode ser vazio")
                 .Matches(@"^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$")
                 .WithMessage("O formato do CNPJ está incorreto.");
-
-            RuleFor(a => a.TypeOfCompany)
-                .NotEmpty()
-                .WithMessage("O nome da empresa não pode ser vazio");
 
             RuleFor(a => a.BusinessAddress)
                 .NotEmpty()

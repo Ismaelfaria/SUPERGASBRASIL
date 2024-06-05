@@ -9,7 +9,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
     {
         private readonly IProductRepository _prod;
 
-        public ProductService(IProductRepository prod) 
+        public ProductService(IProductRepository prod)
         {
             _prod = prod;
         }
@@ -29,7 +29,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
 
         public IEnumerable<Product> FindAll()
         {
-           return _prod.FindAll();
+            return _prod.FindAll();
         }
 
         public Product FindByIdProduct(Guid id)

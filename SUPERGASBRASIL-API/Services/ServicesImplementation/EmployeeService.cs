@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using SUPERGASBRASIL_API.Entities;
+using SUPERGASBRASIL_API.Entities.Enum;
 using SUPERGASBRASIL_API.Mappers.Models.InputModel;
 using SUPERGASBRASIL_API.Repositories.Interfaces;
 using SUPERGASBRASIL_API.Services.Interfaces;
@@ -30,6 +31,25 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
             }
 
             var createMapObject = mapper.Map<Employees>(employee);
+
+            switch (createMapObject.Position)
+            {
+                case EPositions.Repositor:
+                    createMapObject.Positions = "repositor";
+                    break;
+
+                case EPositions.Secretaria:
+                    createMapObject.Positions = "secretaria";
+                    break;
+
+                case EPositions.Fixina:
+                    createMapObject.Positions = "faxina";
+                    break;
+
+                case EPositions.Gerente:
+                    createMapObject.Positions = "gerente";
+                    break;
+            }
 
             createMapObject.IdEmployees = Guid.NewGuid();
 
@@ -103,4 +123,4 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
             }
         }
     }
-    } 
+}

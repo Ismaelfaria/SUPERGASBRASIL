@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using SUPERGASBRASIL_API.Entities;
+using SUPERGASBRASIL_API.Entities.Enum;
 using SUPERGASBRASIL_API.Mappers.Models.InputModel;
 using SUPERGASBRASIL_API.Repositories.Interfaces;
 using SUPERGASBRASIL_API.Services.Interfaces;
@@ -20,9 +21,9 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
             this.validator = validator;
         }
 
-        public ClientLegalEntity CreateClientLegal(ClientLegal_InputModel clientLegal)
+        public void CreateClientLegal(ClientLegal_InputModel clientLegal)
         {
-           
+
 
             var validResult = validator.Validate(clientLegal);
 
@@ -33,19 +34,40 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
 
             var createMapObject = mapper.Map<ClientLegalEntity>(clientLegal);
 
+            switch (clientLegal.TypeOfCompany)
+            {
+                case ESizeOfCompanies.MEI:
+                    createMapObject.TypeCompany = "MEI";
+                    break;
+
+                case ESizeOfCompanies.EPP:
+                    createMapObject.TypeCompany = "EPP";
+                    break;
+
+                case ESizeOfCompanies.ME:
+                    createMapObject.TypeCompany = "ME";
+                    break;
+
+                case ESizeOfCompanies.GE:
+                    createMapObject.TypeCompany = "GE";
+                    break;
+
+                case ESizeOfCompanies.MP:
+                    createMapObject.TypeCompany = "MP";
+                    break;
+
+            }
+
             createMapObject.IdClientLegalEntity = Guid.NewGuid();
 
             client.CreateClientLegal(createMapObject);
 
-            return createMapObject;
         }
         public void DeleteClientLegal(Guid id)
         {
             try
             {
-
                 client.DeleteClientLegal(id);
-
             }
             catch (Exception ex)
             {

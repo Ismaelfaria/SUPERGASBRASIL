@@ -22,7 +22,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.Token
 
         public string GenerateToken(User login)
         {
-           var userDatabase = _userRepository.FindByUserName(login.Username);
+            var userDatabase = _userRepository.FindByUserName(login.Username);
 
             if (userDatabase.Username == login.Username && userDatabase.Password == login.Password)
             {
@@ -38,7 +38,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.Token
             var tokenOption = new JwtSecurityToken(
                 issuer: issuer,
                 audience: audience,
-                claims: new []
+                claims: new[]
                 {
                     new Claim(ClaimTypes.Name, userDatabase.Username),
                     new Claim(ClaimTypes.Role, userDatabase.Roles),

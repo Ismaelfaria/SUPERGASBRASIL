@@ -4,7 +4,7 @@ namespace SUPERGASBRASIL_API.Repositories.Interfaces
 {
     public interface IClientLegalRepository
     {
-        ClientLegalEntity CreateClientLegal(ClientLegalEntity clientLegal);
+        void CreateClientLegal(ClientLegalEntity clientLegal);
         void DeleteClientLegal(Guid id);
         IEnumerable<ClientLegalEntity> FindAll();
         ClientLegalEntity FindByCnpj(string cnpj);

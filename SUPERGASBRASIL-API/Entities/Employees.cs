@@ -13,6 +13,7 @@ namespace SUPERGASBRASIL_API.Entities
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public EPositions Position { get; set; }
+        public string Positions { get; set; }
         public decimal Salary { get; set; }
         public DateTime HireDate { get; set; }
         public bool IsDeleted { get; set; }

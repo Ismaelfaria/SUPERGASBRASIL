@@ -8,6 +8,6 @@ namespace SUPERGASBRASIL_API.Mappers.Models.InputModel
         public ESizeOfCompanies TypeOfCompany { get; set; }
         public string BusinessAddress { get; set; }
         public string TaxIdentificationNumberCNPJ { get; set; }
-        public string ContactInformation { get; set; }
+        public int ContactInformation { get; set; }
     }
 }

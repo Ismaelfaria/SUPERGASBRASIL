@@ -12,12 +12,13 @@ namespace SUPERGASBRASIL_API.Entities
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public ESizeOfCompanies TypeOfCompany { get; set; }
+        public string TypeCompany { get; set; }
         public string BusinessAddress { get; set; }
         public string TaxIdentificationNumberCNPJ { get; set; }
-        public string ContactInformation { get; set; }
+        public int ContactInformation { get; set; }
         public bool IsDeleted { get; set; }
 
-        public ClientLegalEntity(string companyName, ESizeOfCompanies typeOfCompany, string businessAddress, string taxIdentificationNumberCNPJ, string contactInformation)
+        public ClientLegalEntity(string companyName, ESizeOfCompanies typeOfCompany, string businessAddress, string taxIdentificationNumberCNPJ, int contactInformation)
         {
             CompanyName = companyName ?? throw new ArgumentNullException(nameof(companyName));
             TypeOfCompany = typeOfCompany;
@@ -26,7 +27,7 @@ namespace SUPERGASBRASIL_API.Entities
             ContactInformation = contactInformation;
             IsDeleted = false;
         }
-        public void Update(string companyName, ESizeOfCompanies typeOfCompany, string businessAddress, string taxIdentificationNumberCNPJ, string contactInformation)
+        public void Update(string companyName, ESizeOfCompanies typeOfCompany, string businessAddress, string taxIdentificationNumberCNPJ, int contactInformation)
         {
             CompanyName = companyName;
             TypeOfCompany = typeOfCompany;
