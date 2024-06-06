@@ -12,8 +12,8 @@ using SUPERGASBRASIL_API.Persistence.Context;
 namespace SUPERGASBRASIL_API.Migrations
 {
     [DbContext(typeof(GasContext))]
-    [Migration("20240605231801_SecondMigration")]
-    partial class SecondMigration
+    [Migration("20240606084715_MigrationGas")]
+    partial class MigrationGas
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,19 +69,17 @@ namespace SUPERGASBRASIL_API.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("nome_Empresa");
 
-                    b.Property<string>("ContactInformation")
-                        .IsRequired()
+                    b.Property<int>("ContactInformation")
                         .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)")
+                        .HasColumnType("int")
                         .HasColumnName("contato");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("TaxIdentificationNumberCNPJ")
-                        .IsRequired()
+                    b.Property<long>("TaxIdentificationNumberCNPJ")
                         .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)")
+                        .HasColumnType("bigint")
                         .HasColumnName("cnpj");
 
                     b.Property<string>("TypeCompany")
@@ -299,22 +297,25 @@ namespace SUPERGASBRASIL_API.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Senhas");
 
                     b.Property<int>("Role")
                         .HasColumnType("int");
 
                     b.Property<string>("Roles")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Cargo");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Usuario");
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("tbl_Users", (string)null);
                 });
 
             modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Inventory", b =>

@@ -17,7 +17,6 @@ namespace SUPERGASBRASIL_API.Persistence.Context
         public DbSet<Inventory> Inventory { get; set; }
         public DbSet<Transaction> Transaction { get; set; }
         public DbSet<Employees> Employees { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -167,7 +166,21 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                 .HasColumnName("data_Transação");
                 
             });
-        }
+            modelBuilder.Entity<User>(t =>
+            {
+                t.ToTable("tbl_Users");
+                t.HasKey(e => e.Id);
+                t.Property(e => e.Username)
+                .HasColumnName("Usuario")
+                    .IsRequired();
+                t.Property(e => e.Password)
+                .HasColumnName("Senhas")
+                    .IsRequired();
+                t.Property(e => e.Roles)
+                .HasColumnName("Cargo")
+                    .IsRequired();
+            });
+            }
 
     }
 }

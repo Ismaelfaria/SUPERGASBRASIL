@@ -17,7 +17,6 @@ namespace SUPERGASBRASIL_API.Validators
             
             RuleFor(a => a.TaxIdentificationNumberCNPJ)
                 .NotEmpty()
-                .Matches(@"^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$")
                 .WithMessage("O formato do CNPJ está incorreto.");
 
             RuleFor(a => a.BusinessAddress)

@@ -21,7 +21,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
             this.validator = validator;
         }
 
-        public void CreateClientLegal(ClientLegal_InputModel clientLegal)
+        public ClientLegalEntity CreateClientLegal(ClientLegal_InputModel clientLegal)
         {
 
 
@@ -33,6 +33,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
             }
 
             var createMapObject = mapper.Map<ClientLegalEntity>(clientLegal);
+
+            createMapObject.IdClientLegalEntity = Guid.NewGuid();
 
             switch (clientLegal.TypeOfCompany)
             {
@@ -58,9 +60,9 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
 
             }
 
-            createMapObject.IdClientLegalEntity = Guid.NewGuid();
+            var c = client.CreateClientLegal(createMapObject);
 
-            client.CreateClientLegal(createMapObject);
+            return c;
 
         }
         public void DeleteClientLegal(Guid id)
@@ -88,7 +90,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
             }
         }
 
-        public ClientLegalEntity FindByCnpj(string cnpj)
+        public ClientLegalEntity FindByCnpj(long cnpj)
         {
             try
             {
@@ -115,7 +117,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
                 throw new Exception("Erro a buscar o cliente", ex);
             }
         }
-        public void UpdateClientLegal(string cnpj, ClientLegal_InputModel clientLegal)
+        public void UpdateClientLegal(long cnpj, ClientLegal_InputModel clientLegal)
         {
             try
             {

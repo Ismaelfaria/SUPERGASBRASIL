@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Win32;
 using SUPERGASBRASIL_API.Mappers.Models.InputModel;
 using SUPERGASBRASIL_API.Services.Interfaces;
 
@@ -45,9 +46,9 @@ namespace SUPERGASBRASIL_API.Controllers
             try
             {
                 
-                client.CreateClientLegal(clientEntity);
+               var c = client.CreateClientLegal(clientEntity);
 
-                return Created();
+                return CreatedAtAction(nameof(BuscarCnpj), new { cnpj = c.TaxIdentificationNumberCNPJ }, c);
             }
             catch (ValidationException ex)
             {
@@ -101,8 +102,8 @@ namespace SUPERGASBRASIL_API.Controllers
         /// </summary>
         ///
         /// <response code="404">Se o item não for encontrado</response> 
-        [HttpGet("{cnpj}")]
-        public IActionResult BuscarCnpj(string cnpj)
+        [HttpGet("cnpj/{cnpj}")]
+        public IActionResult BuscarCnpj(long cnpj)
         {
             try
             {
@@ -140,7 +141,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// <response code="201">Retorna o novo item atualizado</response>
         /// <response code="500">Se o item não foi atualizado</response> 
         [HttpPut]
-        public IActionResult AtualizarRegistro([FromForm] ClientLegal_InputModel clientEntity, string cnpj)
+        public IActionResult AtualizarRegistro([FromForm] ClientLegal_InputModel clientEntity, long cnpj)
         {
             try
             {
