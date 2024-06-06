@@ -8,6 +8,11 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryClientNatural
     {
         private readonly GasContext _context;
 
+        public ClientNaturalRepository(GasContext context)
+        {
+            _context = context;
+        }
+
         public ClientNaturalPerson CreateClientNatural(ClientNaturalPerson clientNatural)
         {
             _context.ClientNatural.Add(clientNatural);

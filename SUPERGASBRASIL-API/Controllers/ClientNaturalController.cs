@@ -59,7 +59,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// </summary>
          /// <response code="404">Se o item não for encontrado</response> 
 
-        [HttpGet]
+        [HttpGet("BuscarTodosClientesF")]
         public IActionResult BuscarTodosClientes()
         {
             try
@@ -78,7 +78,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// </summary>
         ///
         /// <response code="404">Se o item não for encontrado</response> 
-        [HttpGet("{name}")]
+        [HttpGet("nomeClient/{name}")]
         public IActionResult BuscarNome(string name)
         {
             try { 
@@ -95,7 +95,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// </summary>
         ///
         /// <response code="404">Se o item não for encontrado</response> 
-        [HttpGet("{cpf}")]
+        [HttpGet("cpf/{cpf}")]
         public IActionResult BuscarCpf(string cpf)
         {
 

@@ -12,8 +12,7 @@ namespace SUPERGASBRASIL_API.Validators
                 .WithMessage("O nome da empresa não pode ser vazio");
 
             RuleFor(a => a.CPF)
-                .NotEmpty().WithMessage("O CPF não pode estar vazio.")
-                .Matches(@"^\d{3}\.\d{3}\.\d{3}\-\d{2}$").WithMessage("O formato do CPF está incorreto.");
+                .NotEmpty().WithMessage("O CPF não pode estar vazio.");
         }
     }
 }
