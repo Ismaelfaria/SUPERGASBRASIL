@@ -43,7 +43,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// </summary>
         ///
         /// <response code="404">Se o item não for encontrado</response> 
-        [HttpGet]
+        [HttpGet("/buscar-transações")]
         public IActionResult BuscarTodasTransacoes()
         {
             try

@@ -64,7 +64,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// </summary>
         ///
         /// <response code="404">Se o item não for encontrado</response> 
-        [HttpGet]
+        [HttpGet("/buscar-funcionarios")]
         public IActionResult BuscarTodosFuncionarios()
         {
             try
@@ -83,7 +83,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// </summary>
         ///
         /// <response code="404">Se o item não for encontrado</response> 
-        [HttpGet("{name}")]
+        [HttpGet("/buscar-funcionario-nome/{name}")]
         public IActionResult BuscarNomeDoFuncionario(string name)
         {
             try
@@ -102,7 +102,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// </summary>
         ///
         /// <response code="404">Se o item não for encontrado</response> 
-        [HttpGet("{cnpj}")]
+        [HttpGet("/buscar-funcionario-cpf-{cpf}")]
         public IActionResult BuscarFuncionarioPorCpf(string cpf)
         {
             try
