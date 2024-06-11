@@ -74,6 +74,8 @@ builder.Services.AddTransient<IValidator<ClientLegal_InputModel>, ClientLegal_In
 builder.Services.AddTransient<IValidator<ClientNatural_InputModel>, ClientNatural_InputValidator>();
 builder.Services.AddTransient<IValidator<Employees_InputModel>, Employee_InputValidator>();
 builder.Services.AddTransient<IValidator<User_InputModel>, User_InputValidator>();
+builder.Services.AddTransient<IValidator<Product_InputModel>, Product_InputValidator>();
+builder.Services.AddTransient<IValidator<Inventory_InputModel>, Inventory_InputValidator>();
 
 
 builder.Services.AddSwaggerGen(opt =>

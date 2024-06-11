@@ -1,18 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SUPERGASBRASIL_API.Entities.PIT;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using SUPERGASBRASIL_API.Mappers.Models.InputModel;
+using SUPERGASBRASIL_API.Services.Interfaces.PIT_ServicesInterfaces;
 using SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services;
 
 namespace SUPERGASBRASIL_API.Controllers
 {
-    [Route("api/Inventary")]
+    [Route("api/Inventory")]
     [ApiController]
-    public class InventaryController : ControllerBase
+    public class InventoryController : ControllerBase
     {
-        private readonly InventoryService _inv;
+        private readonly IInventoryService _inv;
 
-        public InventaryController(InventoryService inv)
+        public InventoryController(IInventoryService inv)
         {
-            this._inv = inv;
+            _inv = inv;
         }
 
 
@@ -22,8 +24,8 @@ namespace SUPERGASBRASIL_API.Controllers
         /// <returns>Um novo inventario foi criado</returns>
         /// <response code="201">Retorna o novo item criado</response>
         /// <response code="500">Se o item não for criado</response> 
-        [HttpPost]
-        public IActionResult CriarInventario([FromForm] Inventory inv)
+        [HttpPost("/create")]
+        public IActionResult CriarInventario([FromForm] Inventory_InputModel inv)
         {
             try
             {
@@ -60,7 +62,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// </summary>
         ///
         /// <response code="404">Seu o item não for encontrado</response> 
-        [HttpGet("/buscar-inventario-id/{name}")]
+        [HttpGet("/buscar-inventario-id/{id}")]
         public IActionResult BuscaInventariosPorId(Guid id)
         {
             try

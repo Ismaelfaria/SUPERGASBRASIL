@@ -34,7 +34,7 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryEmployee
             return usersDatabase;
         }
 
-        public Employees FindByCpf(string cpf)
+        public Employees FindByCpf(long cpf)
         {
             var userDatabase = _context.Employees.SingleOrDefault(a => a.Cpf == cpf);
 
@@ -57,7 +57,7 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryEmployee
 
             return userDatabase;
         }
-        public void UpdateEmployee(string cpf, Employees employee)
+        public void UpdateEmployee(long cpf, Employees employee)
         {
             var userDatabase = _context.Employees.SingleOrDefault(a => a.Cpf == cpf);
 

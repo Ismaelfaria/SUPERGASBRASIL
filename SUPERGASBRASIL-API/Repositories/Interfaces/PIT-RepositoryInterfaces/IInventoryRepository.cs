@@ -4,7 +4,7 @@ namespace SUPERGASBRASIL_API.Repositories.Interfaces.PIT_RepositoryInterfaces
 {
     public interface IInventoryRepository
     {
-        Inventory CreateInventory(Inventory product);
+        Inventory CreateInventory(Inventory inventory);
         void DeleteInventory(Guid id);
         IEnumerable<Inventory> FindAll();
         Inventory FindByIdInventory(Guid id);

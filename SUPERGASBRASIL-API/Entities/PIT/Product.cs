@@ -11,8 +11,8 @@
         public string Description { get; set; }
         public decimal Price { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime UpdatedAt { get; set; }
-        public Inventory Inventoryy { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+        public Inventory? Inventoryy { get; set; }
         public bool IsDeleted { get; set; }
 
         public void UpdateProduct(string name, string description, decimal price)

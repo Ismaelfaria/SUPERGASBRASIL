@@ -53,6 +53,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
 
             createMapObject.IdEmployees = Guid.NewGuid();
 
+            createMapObject.Age = DateTime.Now.Year - createMapObject.DateOfBirth.Year;
+
             Employee.CreateEmployee(createMapObject);
 
             return createMapObject;
@@ -82,7 +84,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
             }
         }
 
-        public Employees FindByCpf(string cpf)
+        public Employees FindByCpf(long cpf)
         {
             try
             {
@@ -110,7 +112,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
             }
 
         }
-        public void UpdateEmployee(string cpf, Employees_InputModel employee)
+        public void UpdateEmployee(long cpf, Employees_InputModel employee)
         {
             try
             {

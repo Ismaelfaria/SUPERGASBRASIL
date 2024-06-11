@@ -8,7 +8,7 @@ namespace SUPERGASBRASIL_API.Entities
         public Guid IdEmployees { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
-        public string Cpf { get; set; }
+        public long Cpf { get; set; }
         public DateTime DateOfBirth { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
@@ -18,22 +18,11 @@ namespace SUPERGASBRASIL_API.Entities
         public DateTime HireDate { get; set; }
         public bool IsDeleted { get; set; }
 
-        public Employees(string cpf, string name, int age, DateTime dateOfBirth, EPositions position, decimal salary, DateTime hireDate)
-        {
-            Name = name ?? throw new ArgumentNullException(nameof(name));
-            Age = age;
-            Cpf = cpf;
-            DateOfBirth = dateOfBirth;
-            Position = position;
-            Salary = salary;
-            HireDate = hireDate;
-            IsDeleted = false;
-        }
         public void Deleted()
         {
             IsDeleted = true;
         }
-        public void Update(string cpf, string name, int age, DateTime dateOfBirth, EPositions position, decimal salary, DateTime hireDate)
+        public void Update(long cpf, string name, int age, DateTime dateOfBirth, EPositions position, decimal salary, DateTime hireDate)
         {
             Cpf = cpf;
             Name = name;

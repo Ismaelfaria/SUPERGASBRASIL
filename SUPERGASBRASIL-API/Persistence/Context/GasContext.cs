@@ -99,8 +99,10 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                  .IsRequired();
                 c.Property(e => e.Salary)
                 .HasColumnName("salario")
-                 .IsRequired()
-                 .HasMaxLength(11);
+                 .IsRequired();
+                c.Property(e => e.Positions)
+                .HasColumnName("cargo")
+                 .IsRequired();
                 c.Property(e => e.HireDate)
                 .HasColumnName("data_entrada")
                  .IsRequired();

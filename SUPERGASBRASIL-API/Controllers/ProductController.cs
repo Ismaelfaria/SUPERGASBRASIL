@@ -27,7 +27,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// <response code="201">Retorna o novo item criado</response>
         /// <response code="500">Se o item não for criado</response> 
         [HttpPost]
-        public IActionResult CriarProduto([FromForm] Product produto)
+        public IActionResult CriarProduto([FromForm] Product_InputModel produto)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// <response code="201">Retorna o novo item atualizado</response>
         /// <response code="500">Se o item não foi atualizado</response>
         [HttpPut]
-        public IActionResult AtualizarRegistro([FromForm] Product produto, Guid id)
+        public IActionResult AtualizarRegistro([FromForm] Product_InputModel produto, Guid id)
         {
             try
             {

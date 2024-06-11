@@ -12,16 +12,11 @@ namespace SUPERGASBRASIL_API.Validators
                 .WithMessage("O nome do funcionario não pode ser vazio");
 
             RuleFor(a => a.Cpf)
-                .NotEmpty().WithMessage("O CPF não pode estar vazio.")
-                .Matches(@"^\d{3}\.\d{3}\.\d{3}\-\d{2}$").WithMessage("O formato do CPF está incorreto.");
+                .NotEmpty().WithMessage("O CPF não pode estar vazio.");
 
             RuleFor(a => a.Salary)
                 .NotEmpty()
                 .WithMessage("O Salario não pode ser vazio");
-
-            RuleFor(a => a.Position)
-                .NotEmpty()
-                .WithMessage("O cargo não pode ser vazio");
 
             RuleFor(a => a.DateOfBirth)
                 .NotEmpty()

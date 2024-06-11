@@ -45,8 +45,8 @@ namespace SUPERGASBRASIL_API.Controllers
         {
             try
             {
-                
-               var c = client.CreateClientLegal(clientEntity);
+
+                var c = client.CreateClientLegal(clientEntity);
 
                 return CreatedAtAction(nameof(BuscarCnpj), new { cnpj = c.TaxIdentificationNumberCNPJ }, c);
             }

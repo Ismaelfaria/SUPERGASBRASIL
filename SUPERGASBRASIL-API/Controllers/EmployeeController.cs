@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SUPERGASBRASIL_API.Entities;
 using SUPERGASBRASIL_API.Mappers.Models.InputModel;
 using SUPERGASBRASIL_API.Services.Interfaces;
 
@@ -103,7 +101,7 @@ namespace SUPERGASBRASIL_API.Controllers
         ///
         /// <response code="404">Se o item não for encontrado</response> 
         [HttpGet("/buscar-funcionario-cpf-{cpf}")]
-        public IActionResult BuscarFuncionarioPorCpf(string cpf)
+        public IActionResult BuscarFuncionarioPorCpf(long cpf)
         {
             try
             {
@@ -140,7 +138,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// <response code="201">Retorna o novo item atualizado</response>
         /// <response code="500">Se o item não foi atualizado</response> 
         [HttpPut]
-        public IActionResult AtualizarRegistro([FromForm] Employees_InputModel employeei, string cpf)
+        public IActionResult AtualizarRegistro([FromForm] Employees_InputModel employeei, long cpf)
         {
             try
             {
