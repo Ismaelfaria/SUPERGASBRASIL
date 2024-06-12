@@ -10,12 +10,14 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
     public class InventoryService : IInventoryService
     {
         private readonly IInventoryRepository _inv;
+        private readonly IProductRepository _invS;
         private readonly IMapper _map;
         private readonly IValidator<Inventory_InputModel> validator;
 
-        public InventoryService(IInventoryRepository inv, IMapper map, IValidator<Inventory_InputModel> validator)
+        public InventoryService(IInventoryRepository inv, IProductRepository invS, IMapper map, IValidator<Inventory_InputModel> validator)
         {
             _inv = inv;
+            _invS = invS;
             _map = map;
             this.validator = validator;
         }
@@ -32,6 +34,10 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
             var createMapObject = _map.Map<Inventory>(inventory);
 
             createMapObject.IdInventory = Guid.NewGuid();
+
+            var obj = _invS.FindByIdProduct(createMapObject.IdProduct);
+
+            createMapObject.Product = obj;
 
             _inv.CreateInventory(createMapObject);
 
@@ -50,7 +56,9 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
 
         public Inventory FindByIdInventory(Guid id)
         {
-            return _inv.FindByIdInventory(id);
+            var obj = _inv.FindByIdInventory(id);
+
+            return obj;
         }
 
         public void UpdateInventory(Guid id, int qtd)
