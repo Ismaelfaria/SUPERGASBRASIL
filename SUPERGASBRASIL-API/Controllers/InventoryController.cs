@@ -78,26 +78,6 @@ namespace SUPERGASBRASIL_API.Controllers
         }
 
         /// <summary>
-        /// Atualiza registro de um Inventario.
-        /// </summary>
-        /// <returns>Um novo item atualizado</returns>
-        /// <response code="201">Retorna o novo item atualizado</response>
-        /// <response code="500">Se o item não foi atualizado</response>
-        [HttpPut]
-        public IActionResult AtualizarRegistro([FromForm] Guid Id, int Quantidade)
-        {
-            try
-            {
-                _inv.UpdateInventory(Id, Quantidade);
-
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Inventary não encontrado, Erro na operação {ex.Message}");
-            }
-        }
-        /// <summary>
         /// Deletar o inventario pelo ID.
         /// </summary>
         ///
