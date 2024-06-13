@@ -9,6 +9,5 @@ namespace SUPERGASBRASIL_API.Services.Interfaces.PIT_ServicesInterfaces
         void DeleteInventory(Guid id);
         IEnumerable<Inventory> FindAll();
         Inventory FindByIdInventory(Guid id);
-        void UpdateInventory(Guid id, int qtd);
     }
 }

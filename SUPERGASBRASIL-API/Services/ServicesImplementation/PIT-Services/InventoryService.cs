@@ -37,7 +37,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
 
             var obj = _invS.FindByIdProduct(createMapObject.IdProduct);
 
-            createMapObject.Product = obj;
+            createMapObject.NameProduct = obj.Name;
 
             _inv.CreateInventory(createMapObject);
 
@@ -59,11 +59,6 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
             var obj = _inv.FindByIdInventory(id);
 
             return obj;
-        }
-
-        public void UpdateInventory(Guid id, int qtd)
-        {
-            _inv.UpdateInventory(id, qtd);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace SUPERGASBRASIL_API.Entities.PIT
+﻿using System.Text.Json.Serialization;
+
+namespace SUPERGASBRASIL_API.Entities.PIT
 {
     public class Inventory
     {
@@ -12,16 +14,10 @@
         public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
         public ICollection<Transaction>? Transactions { get; set; }
-        public Product Product { get; set; }
+        public string? NameProduct { get; set; }
+        [JsonIgnore]
+        public Product? Product { get; set; }
         public bool IsDeleted { get; set; }
-
-        public void UpdateInventory(Guid idProduct, int quantity)
-        {
-            IdProduct = idProduct;
-            Quantity = quantity;
-            UpdatedAt = DateTime.UtcNow;
-        }
-
         public void Delete()
         {
             IsDeleted = true;
