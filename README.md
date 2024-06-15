@@ -32,7 +32,7 @@
   <a href="#license">License</a>
 </p>
 
-![screenshot]("C:\Users\ismaelana\Downloads\Captura de tela_15-6-2024_114726_localhost.jpeg")
+<img src="C:\Users\ismaelana\Downloads\Captura de tela_15-6-2024_114726_localhost.jpeg" alt="Markdownify" width="200">
 
 ## Key Features
 
