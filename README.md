@@ -3,11 +3,11 @@
   <br>
   <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://escolaeducacao.com.br/wp-content/uploads/2019/04/super-gas.png" alt="Markdownify" width="200"></a>
   <br>
-  Markdownify
+  SuperGasBrasil
   <br>
 </h1>
 
-<h4 align="center">Uma aplicação Web feita com Asp.Net Core. <a href="http://electron.atom.io" target="_blank">SuperGasBrasil</a>.</h4>
+<h4 align="center">Uma aplicação Web feita com Asp.Net Core. <a href="https://www.supergasbras.com.br" target="_blank">SuperGasBrasil</a>.</h4>
 
 <p align="center">
   <a href="https://badge.fury.io/js/electron-markdownify">
