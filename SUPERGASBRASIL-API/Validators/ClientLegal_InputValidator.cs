@@ -7,7 +7,7 @@ namespace SUPERGASBRASIL_API.Validators
     {
         public ClientLegal_InputValidator()
         {
-            RuleFor(a => a.CompanyName)
+            RuleFor(a => a.Name)
                 .NotEmpty()
                 .WithMessage("O nome da empresa não pode ser vazio");
 
@@ -18,10 +18,6 @@ namespace SUPERGASBRASIL_API.Validators
             RuleFor(a => a.TaxIdentificationNumberCNPJ)
                 .NotEmpty()
                 .WithMessage("O formato do CNPJ está incorreto.");
-
-            RuleFor(a => a.BusinessAddress)
-                .NotEmpty()
-                .WithMessage("O nome da empresa não pode ser vazio");
 
         }
     }

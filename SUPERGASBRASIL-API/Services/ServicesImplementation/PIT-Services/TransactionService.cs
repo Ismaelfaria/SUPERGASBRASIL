@@ -69,7 +69,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
             }
 
             _transactionRepository.CreateTransaction(transaction);
-            _inventoryRepository.UpdateInventory(inventory.IdInventory, inventory.Quantity);
+            // _inventoryRepository.UpdateInventory(inventory.IdInventory, inventory.Quantity);
 
             _context.SaveChanges();
         }

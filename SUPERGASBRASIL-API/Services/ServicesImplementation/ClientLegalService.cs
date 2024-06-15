@@ -1,22 +1,28 @@
 ﻿using AutoMapper;
+using Azure;
 using FluentValidation;
 using SUPERGASBRASIL_API.Entities;
 using SUPERGASBRASIL_API.Entities.Enum;
 using SUPERGASBRASIL_API.Mappers.Models.InputModel;
 using SUPERGASBRASIL_API.Repositories.Interfaces;
+using SUPERGASBRASIL_API.Rest;
+using SUPERGASBRASIL_API.Rest.Interface;
 using SUPERGASBRASIL_API.Services.Interfaces;
+using System.Net;
 
 namespace SUPERGASBRASIL_API.Services.ServicesImplementation
 {
     public class ClientLegalService : IClientLegalService
     {
         private readonly IClientLegalRepository client;
+        private readonly IBrasilAPI brasilApi;
         private readonly IMapper mapper;
         private readonly IValidator<ClientLegal_InputModel> validator;
 
-        public ClientLegalService(IClientLegalRepository client, IMapper mapper, IValidator<ClientLegal_InputModel> validator)
+        public ClientLegalService(IClientLegalRepository client, IBrasilAPI brasilApi, IMapper mapper, IValidator<ClientLegal_InputModel> validator)
         {
             this.client = client;
+            this.brasilApi = brasilApi;
             this.mapper = mapper;
             this.validator = validator;
         }
@@ -36,29 +42,12 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
 
             createMapObject.IdClientLegalEntity = Guid.NewGuid();
 
-            switch (clientLegal.TypeOfCompany)
-            {
-                case ESizeOfCompanies.MEI:
-                    createMapObject.TypeCompany = "MEI";
-                    break;
+            string cnpjInfo = createMapObject.TaxIdentificationNumberCNPJ.ToString();
 
-                case ESizeOfCompanies.EPP:
-                    createMapObject.TypeCompany = "EPP";
-                    break;
+            var resp = brasilApi.BuscarCNPJ(cnpjInfo);
 
-                case ESizeOfCompanies.ME:
-                    createMapObject.TypeCompany = "ME";
-                    break;
+            createMapObject.CnpjInfo = resp.;
 
-                case ESizeOfCompanies.GE:
-                    createMapObject.TypeCompany = "GE";
-                    break;
-
-                case ESizeOfCompanies.MP:
-                    createMapObject.TypeCompany = "MP";
-                    break;
-
-            }
 
             var c = client.CreateClientLegal(createMapObject);
 

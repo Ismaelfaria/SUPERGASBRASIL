@@ -14,6 +14,8 @@ using SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryAdmin;
 using SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryClientLegal;
 using SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryClientNatural;
 using SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryEmployee;
+using SUPERGASBRASIL_API.Rest.Interface;
+using SUPERGASBRASIL_API.Rest;
 using SUPERGASBRASIL_API.Services.Interfaces;
 using SUPERGASBRASIL_API.Services.Interfaces.PIT_ServicesInterfaces;
 using SUPERGASBRASIL_API.Services.Interfaces.Token;
@@ -76,7 +78,8 @@ builder.Services.AddTransient<IValidator<Employees_InputModel>, Employee_InputVa
 builder.Services.AddTransient<IValidator<User_InputModel>, User_InputValidator>();
 builder.Services.AddTransient<IValidator<Product_InputModel>, Product_InputValidator>();
 builder.Services.AddTransient<IValidator<Inventory_InputModel>, Inventory_InputValidator>();
-
+builder.Services.AddSingleton<ICnpjService, CnpjService>();
+builder.Services.AddSingleton<IBrasilAPI, BrasilAPI>();
 
 builder.Services.AddSwaggerGen(opt =>
 {

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SUPERGASBRASIL_API.Entities;
 using SUPERGASBRASIL_API.Entities.PIT;
+using SUPERGASBRASIL_API.Rest.DTO;
+using SUPERGASBRASIL_API.Rest.Model;
 
 namespace SUPERGASBRASIL_API.Persistence.Context
 {
@@ -21,6 +23,8 @@ namespace SUPERGASBRASIL_API.Persistence.Context
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Task<ResponseGenerico<CnpjModel>>>().HasNoKey();
+
             modelBuilder.Entity<Admin>(a =>
             {
                 a.ToTable("tbl_Admin");
@@ -39,16 +43,8 @@ namespace SUPERGASBRASIL_API.Persistence.Context
             {
                 c.ToTable("tbl_ClientJuridico");
                 c.HasKey(e => e.IdClientLegalEntity);
-                c.Property(e => e.CompanyName)
-                .HasColumnName("nome_Empresa")
-                 .IsRequired()
-                 .HasMaxLength(100);
-                c.Property(e => e.TypeOfCompany)
-                .HasColumnName("tipo")
-                 .IsRequired()
-                 .HasMaxLength(100);
-                c.Property(e => e.BusinessAddress)
-                .HasColumnName("endereço")
+                c.Property(e => e.Name)
+                .HasColumnName("nome_cadastro")
                  .IsRequired()
                  .HasMaxLength(100);
                 c.Property(e => e.TaxIdentificationNumberCNPJ)

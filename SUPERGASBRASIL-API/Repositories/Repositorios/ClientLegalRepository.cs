@@ -49,7 +49,7 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryClientLegal
 
         public ClientLegalEntity FindByCompanyName(string name)
         {
-            var userDatabase = _context.ClientLegal.SingleOrDefault(a => a.CompanyName == name);
+            var userDatabase = _context.ClientLegal.SingleOrDefault(a => a.Name == name);
 
             if (userDatabase == null)
             {
@@ -62,7 +62,7 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryClientLegal
         {
             var userDatabase = _context.ClientLegal.SingleOrDefault(a => a.TaxIdentificationNumberCNPJ == cnpj);
 
-            userDatabase.Update(clientLegal.CompanyName, clientLegal.TypeOfCompany, clientLegal.BusinessAddress, clientLegal.TaxIdentificationNumberCNPJ, clientLegal.ContactInformation);
+            userDatabase.Update(clientLegal.Name, clientLegal.TaxIdentificationNumberCNPJ, clientLegal.ContactInformation);
             _context.SaveChanges();
         }
     }
