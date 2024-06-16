@@ -12,8 +12,8 @@ using SUPERGASBRASIL_API.Persistence.Context;
 namespace SUPERGASBRASIL_API.Migrations
 {
     [DbContext(typeof(GasContext))]
-    [Migration("20240615234657_newMigration")]
-    partial class newMigration
+    [Migration("20240616232832_addMigrationGadd")]
+    partial class addMigrationGadd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,8 +68,7 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("nome_cadastro");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<long>("TaxIdentificationNumberCNPJ")
                         .HasMaxLength(11)
@@ -302,11 +301,6 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tbl_Users", (string)null);
-                });
-
-            modelBuilder.Entity("System.Threading.Tasks.Task<SUPERGASBRASIL_API.Rest.DTO.ResponseGenerico<SUPERGASBRASIL_API.Rest.Model.CnpjModel>>", b =>
-                {
-                    b.ToTable("Task<ResponseGenerico<CnpjModel>>");
                 });
 
             modelBuilder.Entity("SUPERGASBRASIL_API.Entities.PIT.Inventory", b =>

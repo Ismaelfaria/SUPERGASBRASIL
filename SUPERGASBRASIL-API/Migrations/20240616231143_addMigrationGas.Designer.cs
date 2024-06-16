@@ -12,8 +12,8 @@ using SUPERGASBRASIL_API.Persistence.Context;
 namespace SUPERGASBRASIL_API.Migrations
 {
     [DbContext(typeof(GasContext))]
-    [Migration("20240613083626_TEstMigration")]
-    partial class TEstMigration
+    [Migration("20240616231143_addMigrationGas")]
+    partial class addMigrationGas
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,18 +57,6 @@ namespace SUPERGASBRASIL_API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("BusinessAddress")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("endereço");
-
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("nome_Empresa");
-
                     b.Property<int>("ContactInformation")
                         .HasMaxLength(11)
                         .HasColumnType("int")
@@ -77,19 +65,16 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("nome_cadastro");
+
                     b.Property<long>("TaxIdentificationNumberCNPJ")
                         .HasMaxLength(11)
                         .HasColumnType("bigint")
                         .HasColumnName("cnpj");
-
-                    b.Property<string>("TypeCompany")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TypeOfCompany")
-                        .HasMaxLength(100)
-                        .HasColumnType("int")
-                        .HasColumnName("tipo");
 
                     b.HasKey("IdClientLegalEntity");
 

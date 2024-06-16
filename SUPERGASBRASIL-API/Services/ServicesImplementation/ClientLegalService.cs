@@ -42,12 +42,16 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
 
             createMapObject.IdClientLegalEntity = Guid.NewGuid();
 
-            string cnpjInfo = createMapObject.TaxIdentificationNumberCNPJ.ToString();
-
-            var resp = brasilApi.BuscarCNPJ(cnpjInfo);
-
-            createMapObject.CnpjInfo = resp.;
-
+            var cnpjResponse = brasilApi.BuscarCNPJ(createMapObject.TaxIdentificationNumberCNPJ.ToString()).Result;
+            if (cnpjResponse.CodigoHttp == System.Net.HttpStatusCode.OK)
+            {
+                createMapObject.CnpjInfo = cnpjResponse.DadosRetorno;
+            }
+            else
+            {
+                // Tratar erro de busca CNPJ aqui
+                throw new Exception("Erro ao buscar informações do CNPJ");
+            }
 
             var c = client.CreateClientLegal(createMapObject);
 

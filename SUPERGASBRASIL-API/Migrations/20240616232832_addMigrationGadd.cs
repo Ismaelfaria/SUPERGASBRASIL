@@ -5,7 +5,7 @@
 namespace SUPERGASBRASIL_API.Migrations
 {
     /// <inheritdoc />
-    public partial class test3MIGRATION : Migration
+    public partial class addMigrationGadd : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -119,9 +119,5 @@ namespace SUPERGASBRASIL_API.Rest.Model
         [JsonPropertyName("qsa")]
         public List<Qsa>? Qsa { get; set; }
 
-        public static implicit operator CnpjModel(Task<ResponseGenerico<CnpjModel>> v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

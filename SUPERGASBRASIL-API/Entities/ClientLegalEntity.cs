@@ -17,7 +17,7 @@ namespace SUPERGASBRASIL_API.Entities
         public string Name { get; set; }
         public long TaxIdentificationNumberCNPJ { get; set; }
         [NotMapped]
-        public Task<ResponseGenerico<CnpjModel>> CnpjInfo { get; set; }
+        public CnpjModel CnpjInfo { get; set; }
         public int ContactInformation { get; set; }
         public bool IsDeleted { get; set; }
 
