@@ -12,8 +12,8 @@ using SUPERGASBRASIL_API.Persistence.Context;
 namespace SUPERGASBRASIL_API.Migrations
 {
     [DbContext(typeof(GasContext))]
-    [Migration("20240616232832_addMigrationGadd")]
-    partial class addMigrationGadd
+    [Migration("20240617084126_jjkkmigration")]
+    partial class jjkkmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

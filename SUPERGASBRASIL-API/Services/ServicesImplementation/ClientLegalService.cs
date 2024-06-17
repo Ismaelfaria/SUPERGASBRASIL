@@ -42,6 +42,8 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
 
             createMapObject.IdClientLegalEntity = Guid.NewGuid();
 
+            createMapObject.Name = clientLegal.Name;
+
             var cnpjResponse = brasilApi.BuscarCNPJ(createMapObject.TaxIdentificationNumberCNPJ.ToString()).Result;
             if (cnpjResponse.CodigoHttp == System.Net.HttpStatusCode.OK)
             {

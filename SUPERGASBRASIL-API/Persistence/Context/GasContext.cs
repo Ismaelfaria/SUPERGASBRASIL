@@ -42,6 +42,7 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                 c.ToTable("tbl_ClientJuridico");
                 c.HasKey(e => e.IdClientLegalEntity);
                 c.Property(e => e.Name)
+                .HasColumnName("nome_Empresa")
                  .IsRequired()
                  .HasMaxLength(100);
                 c.Property(e => e.TaxIdentificationNumberCNPJ)
