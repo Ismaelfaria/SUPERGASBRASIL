@@ -71,8 +71,3 @@ Este software usa os seguintes pacotes de código aberto:
 - [Validação dos dados - FluentValidator](https://docs.fluentvalidation.net/en/latest/)
 
 ---
-
-> [amitmerchant.com](https://www.amitmerchant.com) &nbsp;&middot;&nbsp;
-> GitHub [@amitmerchant1990](https://github.com/amitmerchant1990) &nbsp;&middot;&nbsp;
-> Twitter [@amit_merchant](https://twitter.com/amit_merchant)
-
