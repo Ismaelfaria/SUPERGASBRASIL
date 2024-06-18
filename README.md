@@ -24,15 +24,12 @@
 </p>
 
 <p align="center">
-  <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#download">Download</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#related">Related</a> •
-  <a href="#license">License</a>
+  <a href="#Dependências">Dependências</a> •
+  <a href="#Principais-Características">Principais Características</a> •
+  <a href="#Modo-de-Utilização">Modo de Utilização</a> 
 </p>
 
-## Principais características
+## Principais Características
 
 CRUD:
 * Clientes Juridicos
@@ -64,7 +61,7 @@ $ npm install
 $ npm start
 ```
 
-## Credits
+## Dependências
 
 Este software usa os seguintes pacotes de código aberto:
 
