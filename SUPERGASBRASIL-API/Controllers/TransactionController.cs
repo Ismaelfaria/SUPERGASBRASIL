@@ -25,11 +25,11 @@ namespace SUPERGASBRASIL_API.Controllers
         /// <response code="201">Retorna o novo item criado</response>
         /// <response code="500">Se o item não for criado</response> 
         [HttpPost]
-        public IActionResult TransactionProcess([FromForm] Guid productId, ETransactionINorOUT type, int quantity)
+        public IActionResult TransactionProcess([FromForm] Guid IdInventory, ETransactionINorOUT type, int quantity)
         {
             try
             {
-                 _tran.ProcessTransaction(productId, type, quantity);
+                 _tran.ProcessTransaction(IdInventory, type, quantity);
 
                 return StatusCode(200, $"Operação concluida");
             }
