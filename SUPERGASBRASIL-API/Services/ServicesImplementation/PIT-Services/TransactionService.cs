@@ -30,16 +30,10 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
             return _transactionRepository.FindAll();
         }
 
-        public void ProcessTransaction(Guid productId, ETransactionINorOUT type, int quantity)
+        public void ProcessTransaction(Guid inventoryId, ETransactionINorOUT type, int quantity)
         {
-            var product = _productRepository.FindByIdProduct(productId);
 
-            if (product == null)
-            {
-                throw new Exception("Product not found");
-            }
-
-            var inventory = _inventoryRepository.FindByIdInventory(productId);
+            var inventory = _inventoryRepository.FindByIdInventory(inventoryId);
 
             if (inventory == null)
             {
@@ -53,7 +47,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
 
             var transaction = new Transaction
             {
-                IdProduct = productId,
+                IdInventary = inventoryId,
                 Type = type,
                 Quantity = quantity,
                 CreatedAt = DateTime.UtcNow
@@ -69,7 +63,7 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
             }
 
             _transactionRepository.CreateTransaction(transaction);
-            // _inventoryRepository.UpdateInventory(inventory.IdInventory, inventory.Quantity);
+            _inventoryRepository.UpdateInventory(inventory.Quantity, inventory.IdInventory);
 
             _context.SaveChanges();
         }

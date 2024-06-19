@@ -12,8 +12,8 @@ using SUPERGASBRASIL_API.Persistence.Context;
 namespace SUPERGASBRASIL_API.Migrations
 {
     [DbContext(typeof(GasContext))]
-    [Migration("20240617084126_jjkkmigration")]
-    partial class jjkkmigration
+    [Migration("20240619101354_GatMigrationj")]
+    partial class GatMigrationj
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,7 +68,8 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("nome_Empresa");
 
                     b.Property<long>("TaxIdentificationNumberCNPJ")
                         .HasMaxLength(11)

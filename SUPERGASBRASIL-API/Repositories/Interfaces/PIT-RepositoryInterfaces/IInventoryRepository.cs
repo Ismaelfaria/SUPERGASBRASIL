@@ -1,4 +1,5 @@
-﻿using SUPERGASBRASIL_API.Entities.PIT;
+﻿using SUPERGASBRASIL_API.Entities;
+using SUPERGASBRASIL_API.Entities.PIT;
 
 namespace SUPERGASBRASIL_API.Repositories.Interfaces.PIT_RepositoryInterfaces
 {
@@ -8,5 +9,6 @@ namespace SUPERGASBRASIL_API.Repositories.Interfaces.PIT_RepositoryInterfaces
         void DeleteInventory(Guid id);
         IEnumerable<Inventory> FindAll();
         Inventory FindByIdInventory(Guid id);
+        void UpdateInventory(int qtd, Guid IdInventory);
     }
 }

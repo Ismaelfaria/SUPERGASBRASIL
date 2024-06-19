@@ -60,5 +60,10 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
 
             return obj;
         }
+
+        public void UpdateInventory(int qtd, Guid IdInventory)
+        {
+            _inv.UpdateInventory(qtd, IdInventory);
+        }
     }
 }

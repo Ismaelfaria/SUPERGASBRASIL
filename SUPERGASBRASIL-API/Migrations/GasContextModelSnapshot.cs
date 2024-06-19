@@ -65,7 +65,8 @@ namespace SUPERGASBRASIL_API.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("nome_Empresa");
 
                     b.Property<long>("TaxIdentificationNumberCNPJ")
                         .HasMaxLength(11)

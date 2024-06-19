@@ -16,6 +16,7 @@ namespace SUPERGASBRASIL_API.Entities
         public Guid IdClientLegalEntity { get; set; }
         public string Name { get; set; }
         public long TaxIdentificationNumberCNPJ { get; set; }
+
         [NotMapped]
         public CnpjModel CnpjInfo { get; set; }
         public int ContactInformation { get; set; }
