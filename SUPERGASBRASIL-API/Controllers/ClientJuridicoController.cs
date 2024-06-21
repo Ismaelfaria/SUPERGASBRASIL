@@ -1,21 +1,23 @@
 ﻿using AutoMapper;
 using FluentValidation;
-using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Win32;
 using SUPERGASBRASIL_API.Mappers.Models.InputModel;
 using SUPERGASBRASIL_API.Services.Interfaces;
 
 namespace SUPERGASBRASIL_API.Controllers
 {
-    [Route("api/ClientJuridico")]
+    [Authorize(Roles = "Admin, Secretaria")]
+    [Route("api/Cliente/Juridico")]
     [ApiController]
     public class ClientJuridicoController : ControllerBase
     {
         private readonly IClientLegalService client;
         private readonly IMapper mapper;
 
-        public ClientJuridicoController(IClientLegalService client, IMapper mapper)
+        public ClientJuridicoController(
+            IClientLegalService client, 
+            IMapper mapper)
         {
             this.client = client;
             this.mapper = mapper;
@@ -46,7 +48,6 @@ namespace SUPERGASBRASIL_API.Controllers
         {
             try
             {
-
                 var c = client.CreateClientLegal(clientEntity);
 
                 return CreatedAtAction(nameof(BuscarCnpj), new { cnpj = c.TaxIdentificationNumberCNPJ }, c);
@@ -60,12 +61,13 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(500, $"Operação não concluida, Erro ao criar client {ex.Message}");
             }
         }
+
         /// <summary>
         /// Buscar todos os Clientes/Empresas.
         /// </summary>
         ///
         /// <response code="404">Se o item não for encontrado</response> 
-        [HttpGet("BuscarTodosClients")]
+        [HttpGet("buscar-todos-clientes")]
         public IActionResult BuscarTodosClientes()
         {
             try
@@ -79,6 +81,7 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(404, $"Clientes não encontrados, Erro na operação {ex.Message}");
             }
         }
+
         /// <summary>
         /// Buscar os Clientes/Empresas pelo nome.
         /// </summary>
@@ -98,6 +101,7 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(404, $"Cliente não encontrado, Erro na operação {ex.Message}");
             }
         }
+
         /// <summary>
         /// Buscar os Clientes/Empresas pelo CNPJ.
         /// </summary>
@@ -111,7 +115,6 @@ namespace SUPERGASBRASIL_API.Controllers
                 var clientCpf = client.FindByCnpj(cnpj);
 
                 return Ok(clientCpf);
-
             }
             catch (Exception ex)
             {
@@ -141,6 +144,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// <returns>Um novo item atualizado</returns>
         /// <response code="201">Retorna o novo item atualizado</response>
         /// <response code="500">Se o item não foi atualizado</response> 
+        
         [HttpPut]
         public IActionResult AtualizarRegistro([FromForm] ClientLegal_InputModel clientEntity, long cnpj)
         {
@@ -155,6 +159,7 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(500, $"Cliente não encontrado, Erro na operação {ex.Message}");
             }
         }
+
         /// <summary>
         /// Deletar o Clientes/Empresas pelo ID.
         /// </summary>

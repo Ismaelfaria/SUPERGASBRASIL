@@ -1,14 +1,12 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SUPERGASBRASIL_API.Entities.PIT;
 using SUPERGASBRASIL_API.Mappers.Models.InputModel;
-using SUPERGASBRASIL_API.Services.Interfaces;
 using SUPERGASBRASIL_API.Services.Interfaces.PIT_ServicesInterfaces;
 
 namespace SUPERGASBRASIL_API.Controllers
 {
-    [Route("api/Product")]
+    [Authorize(Roles = "Admin, Secretaria")]
+    [Route("api/Produto")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -18,7 +16,6 @@ namespace SUPERGASBRASIL_API.Controllers
         {
             this.prod = employee;
         }
-
 
         /// <summary>
         /// Cria um registro de Produto.

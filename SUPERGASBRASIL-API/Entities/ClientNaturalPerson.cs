@@ -2,7 +2,6 @@
 {
     public class ClientNaturalPerson
     {
-
         public Guid IdClientNaturalPerson { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }

@@ -14,7 +14,11 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
         private readonly IMapper _map;
         private readonly IValidator<Inventory_InputModel> validator;
 
-        public InventoryService(IInventoryRepository inv, IProductRepository invS, IMapper map, IValidator<Inventory_InputModel> validator)
+        public InventoryService(
+            IInventoryRepository inv,
+            IProductRepository invS, 
+            IMapper map, 
+            IValidator<Inventory_InputModel> validator)
         {
             _inv = inv;
             _invS = invS;

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SUPERGASBRASIL_API.Dto;
 using SUPERGASBRASIL_API.Entities;
 using SUPERGASBRASIL_API.Services.Interfaces.Token;
 
@@ -16,8 +18,11 @@ namespace SUPERGASBRASIL_API.Controllers
             _token = token;
         }
 
-        [HttpPost("authentication")]
-        public IActionResult Login([FromForm] User login)
+        /// <summary>
+        /// Para obter o TOKEN
+        /// </summary>
+        [HttpPost("/authentication")]
+        public IActionResult Login([FromForm] ModelOfLogin login)
         {
             try
             {

@@ -18,7 +18,6 @@ namespace SUPERGASBRASIL_API.Validators
             RuleFor(a => a.TaxIdentificationNumberCNPJ)
                 .NotEmpty()
                 .WithMessage("O formato do CNPJ está incorreto.");
-
         }
     }
 }

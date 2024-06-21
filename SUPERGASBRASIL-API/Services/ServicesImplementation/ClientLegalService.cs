@@ -19,7 +19,11 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
         private readonly IMapper mapper;
         private readonly IValidator<ClientLegal_InputModel> validator;
 
-        public ClientLegalService(IClientLegalRepository client, IBrasilAPI brasilApi, IMapper mapper, IValidator<ClientLegal_InputModel> validator)
+        public ClientLegalService(
+            IClientLegalRepository client,
+            IBrasilAPI brasilApi,
+            IMapper mapper,
+            IValidator<ClientLegal_InputModel> validator)
         {
             this.client = client;
             this.brasilApi = brasilApi;

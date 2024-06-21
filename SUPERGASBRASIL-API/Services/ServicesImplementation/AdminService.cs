@@ -13,7 +13,10 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
         private readonly IValidator<Admin_InputModel> _validator;
         private readonly IMapper _mapper;
 
-        public AdminService(IAdminRepository admin, IValidator<Admin_InputModel> validator, IMapper mapper)
+        public AdminService(
+            IAdminRepository admin, 
+            IValidator<Admin_InputModel> validator, 
+            IMapper mapper)
         {
             _admin = admin;
             _validator = validator;

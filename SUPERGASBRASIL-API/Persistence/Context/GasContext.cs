@@ -176,7 +176,6 @@ namespace SUPERGASBRASIL_API.Persistence.Context
                 .HasColumnName("Cargo")
                     .IsRequired();
             });
-            }
-
+        }
     }
 }

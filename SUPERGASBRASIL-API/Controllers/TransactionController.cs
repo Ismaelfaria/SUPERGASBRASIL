@@ -1,22 +1,20 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SUPERGASBRASIL_API.Entities.Enum;
-using SUPERGASBRASIL_API.Entities.PIT;
 using SUPERGASBRASIL_API.Services.Interfaces.PIT_ServicesInterfaces;
 
 namespace SUPERGASBRASIL_API.Controllers
 {
-    [Route("api/Transaction")]
+    [Authorize(Roles = "Admin, Secretaria")]
+    [Route("api/Transacao")]
     [ApiController]
     public class TransactionController : ControllerBase
     {
         private readonly ITransactionService _tran;
-
         public TransactionController(ITransactionService tra)
         {
             this._tran = tra;
         }
-
 
         /// <summary>
         /// Cria uma transação.
@@ -29,7 +27,7 @@ namespace SUPERGASBRASIL_API.Controllers
         {
             try
             {
-                 _tran.ProcessTransaction(IdInventory, type, quantity);
+                _tran.ProcessTransaction(IdInventory, type, quantity);
 
                 return StatusCode(200, $"Operação concluida");
             }
@@ -57,6 +55,5 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(404, $"transações não encontrados, Erro na operação {ex.Message}");
             }
         }
-        
     }
 }

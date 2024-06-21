@@ -18,6 +18,5 @@ namespace SUPERGASBRASIL_API.Validators
                 .NotEmpty()
                 .WithMessage("A função do usuario não pode ser vazia");
         }
-
     }
 }

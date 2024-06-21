@@ -27,7 +27,7 @@ namespace SUPERGASBRASIL_API.Repositories.Repositorios.RepositoryAdmin
             userDatabase.Deleted();
             _context.SaveChanges();
         }
-        
+
         public IEnumerable<Admin> FindAll()
         {
             var usersDatabase = _context.Admin.Where(a => !a.IsDeleted).ToList();

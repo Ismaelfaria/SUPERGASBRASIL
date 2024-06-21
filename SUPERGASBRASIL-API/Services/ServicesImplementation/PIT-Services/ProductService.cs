@@ -15,7 +15,10 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services
         private readonly IMapper _map;
         private readonly IValidator<Product_InputModel> validator;
 
-        public ProductService(IProductRepository prod, IMapper map, IValidator<Product_InputModel> validator)
+        public ProductService(
+            IProductRepository prod, 
+            IMapper map, 
+            IValidator<Product_InputModel> validator)
         {
             _prod = prod;
             _map = map;

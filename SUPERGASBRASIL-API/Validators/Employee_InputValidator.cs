@@ -22,6 +22,5 @@ namespace SUPERGASBRASIL_API.Validators
                 .NotEmpty()
                 .WithMessage("A data de nascimento não pode ser vazio");
         }
-
     }
 }

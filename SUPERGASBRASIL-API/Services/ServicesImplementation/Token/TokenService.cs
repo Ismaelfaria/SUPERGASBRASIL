@@ -1,4 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using SUPERGASBRASIL_API.Dto;
 using SUPERGASBRASIL_API.Entities;
 using SUPERGASBRASIL_API.Repositories.Interfaces;
 using SUPERGASBRASIL_API.Services.Interfaces.Token;
@@ -14,39 +15,42 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation.Token
         public readonly IConfiguration _configuration;
         public readonly IUserRepository _userRepository;
 
-        public TokenService(IConfiguration configuration, IUserRepository userRepository)
+        public TokenService(
+            IConfiguration configuration, 
+            IUserRepository userRepository)
         {
             _configuration = configuration;
             _userRepository = userRepository;
         }
 
-        public string GenerateToken(User login)
+        public string GenerateToken(ModelOfLogin login)
         {
             var userDatabase = _userRepository.FindByUserName(login.Username);
 
-            if (userDatabase.Username == login.Username && userDatabase.Password == login.Password)
+            if (userDatabase == null)
             {
                 return string.Empty;
             }
 
-            var secretyKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration[""]));
-            var issuer = _configuration[""];
-            var audience = _configuration[""];
+            var secretyKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var issuer = _configuration["Jwt:Issuer"];
+            var audience = _configuration["Jwt:Audience"];
 
             var signingCredentials = new SigningCredentials(secretyKey, SecurityAlgorithms.HmacSha256);
 
-            var tokenOption = new JwtSecurityToken(
+            var tokenOptions = new JwtSecurityToken(
                 issuer: issuer,
                 audience: audience,
-                claims: new[]
+                claims: new Claim[]
                 {
                     new Claim(ClaimTypes.Name, userDatabase.Username),
                     new Claim(ClaimTypes.Role, userDatabase.Roles),
                 },
                 expires: DateTime.Now.AddHours(2),
-                signingCredentials: signingCredentials);
+                signingCredentials: signingCredentials
+                );
 
-            var token = new JwtSecurityTokenHandler().WriteToken(tokenOption);
+            var token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
 
             return token;
         }

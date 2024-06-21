@@ -1,20 +1,21 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SUPERGASBRASIL_API.Entities;
 using SUPERGASBRASIL_API.Mappers.Models.InputModel;
 using SUPERGASBRASIL_API.Services.Interfaces;
 
 namespace SUPERGASBRASIL_API.Controllers
 {
-    [Route("api/Users")]
+    [Authorize(Roles = "Admin, Secretaria")]
+    [Route("api/Usuarios")]
     [ApiController]
     public class UserController : ControllerBase
     {
         public readonly IUserService _user;
         public readonly IMapper _mapper;
-
-        public UserController(IUserService user, IMapper mapper)
+        public UserController(
+            IUserService user,
+            IMapper mapper)
         {
             _user = user;
             _mapper = mapper;
@@ -98,6 +99,5 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(500, $"usuarios não encontrado, Erro na operação {ex.Message}");
             }
         }
-
     }
 }

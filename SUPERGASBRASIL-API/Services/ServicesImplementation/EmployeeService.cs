@@ -14,7 +14,10 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
         private readonly IMapper mapper;
         private readonly IValidator<Employees_InputModel> validator;
 
-        public EmployeeService(IEmployeeRepository employee, IMapper mapper, IValidator<Employees_InputModel> validator)
+        public EmployeeService(
+            IEmployeeRepository employee,
+            IMapper mapper,
+            IValidator<Employees_InputModel> validator)
         {
             Employee = employee;
             this.mapper = mapper;

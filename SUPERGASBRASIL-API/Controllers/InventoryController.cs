@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SUPERGASBRASIL_API.Mappers.Models.InputModel;
 using SUPERGASBRASIL_API.Services.Interfaces.PIT_ServicesInterfaces;
-using SUPERGASBRASIL_API.Services.ServicesImplementation.PIT_Services;
 
 namespace SUPERGASBRASIL_API.Controllers
 {
-    [Route("api/Inventory")]
+    [Authorize(Roles = "Admin, Secretaria")]
+    [Route("api/Inventario")]
     [ApiController]
     public class InventoryController : ControllerBase
     {
@@ -17,14 +17,13 @@ namespace SUPERGASBRASIL_API.Controllers
             _inv = inv;
         }
 
-
         /// <summary>
         /// Cria um registro de Inventario.
         /// </summary>
         /// <returns>Um novo inventario foi criado</returns>
         /// <response code="201">Retorna o novo item criado</response>
         /// <response code="500">Se o item não for criado</response> 
-        [HttpPost("/create")]
+        [HttpPost]
         public IActionResult CriarInventario([FromForm] Inventory_InputModel inv)
         {
             try

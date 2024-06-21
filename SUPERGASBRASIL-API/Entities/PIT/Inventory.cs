@@ -18,7 +18,6 @@ namespace SUPERGASBRASIL_API.Entities.PIT
         [JsonIgnore]
         public Product? Product { get; set; }
         public bool IsDeleted { get; set; }
-
         public void UpdateInventory(int quantity)
         {
             Quantity = quantity;

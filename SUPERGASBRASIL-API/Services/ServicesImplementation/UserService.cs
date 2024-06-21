@@ -14,7 +14,10 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
         private readonly IMapper _mapper;
         private readonly IValidator<User_InputModel> _validator;
 
-        public UserService(IUserRepository user, IMapper mapper, IValidator<User_InputModel> validator)
+        public UserService(
+            IUserRepository user,
+            IMapper mapper,
+            IValidator<User_InputModel> validator)
         {
             _user = user;
             _mapper = mapper;

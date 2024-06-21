@@ -1,24 +1,27 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SUPERGASBRASIL_API.Mappers.Models.InputModel;
 using SUPERGASBRASIL_API.Services.Interfaces;
 
 namespace SUPERGASBRASIL_API.Controllers
 {
-    [Route("api/Employee")]
+    [Authorize(Roles = "Admin, Secretaria")]
+    [Route("api/Funcionario")]
     [ApiController]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeService employee;
         private readonly IMapper mapper;
 
-        public EmployeeController(IEmployeeService employee, IMapper mapper)
+        public EmployeeController(
+            IEmployeeService employee, 
+            IMapper mapper)
         {
             this.employee = employee;
             this.mapper = mapper;
         }
-
 
         /// <summary>
         /// Cria um registro de Funcionario.
@@ -57,6 +60,7 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(500, $"Operação não concluida, Erro ao criar client {ex.Message}");
             }
         }
+
         /// <summary>
         /// Buscar todos os Funcionarios.
         /// </summary>
@@ -76,6 +80,7 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(404, $"Funcionario não encontrados, Erro na operação {ex.Message}");
             }
         }
+
         /// <summary>
         /// Buscar os Funcionarios pelo nome.
         /// </summary>
@@ -95,6 +100,7 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(404, $"Funcionario não encontrado, Erro na operação {ex.Message}");
             }
         }
+
         /// <summary>
         /// Buscar os Funcionarios pelo CPF.
         /// </summary>
@@ -108,7 +114,6 @@ namespace SUPERGASBRASIL_API.Controllers
                 var employeeCpf = employee.FindByCpf(cpf);
 
                 return Ok(employeeCpf);
-
             }
             catch (Exception ex)
             {
@@ -151,6 +156,7 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(500, $"funcionario não encontrado, Erro na operação {ex.Message}");
             }
         }
+
         /// <summary>
         /// Deletar o Funcionario pelo ID.
         /// </summary>
@@ -170,6 +176,5 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(500, $"Funcionario não encontrado, Erro na operação {ex.Message}");
             }
         }
-
     }
 }

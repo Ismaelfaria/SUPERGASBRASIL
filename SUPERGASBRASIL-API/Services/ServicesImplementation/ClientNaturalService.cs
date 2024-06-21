@@ -13,7 +13,10 @@ namespace SUPERGASBRASIL_API.Services.ServicesImplementation
         private readonly IMapper mapper;
         private readonly IValidator<ClientNatural_InputModel> validator;
 
-        public ClientNaturalService(IClientNaturalRepository client, IMapper mapper, IValidator<ClientNatural_InputModel> validator)
+        public ClientNaturalService(
+            IClientNaturalRepository client,
+            IMapper mapper,
+            IValidator<ClientNatural_InputModel> validator)
         {
             this.client = client;
             this.mapper = mapper;

@@ -1,25 +1,29 @@
 ﻿using AutoMapper;
 using FluentValidation;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SUPERGASBRASIL_API.Mappers.Models.InputModel;
 using SUPERGASBRASIL_API.Services.Interfaces;
 
 namespace SUPERGASBRASIL_API.Controllers
 {
+    [Authorize(Roles = "Admin, Secretaria")]
     [ApiController]
-    [Route("api/ClientFisico")]
-    
+    [Route("api/Cliente/Fisico")]
+
     public class ClientNaturalController : ControllerBase
     {
         private readonly IClientNaturalService client;
         private readonly IMapper mapper;
 
-        public ClientNaturalController(IClientNaturalService client, IMapper mapper)
+        public ClientNaturalController(
+            IClientNaturalService client, 
+            IMapper mapper)
         {
             this.client = client;
             this.mapper = mapper;
         }
+
         /// <summary>
         /// Cria um registro de Cliente Fisico.
         /// </summary>
@@ -44,8 +48,9 @@ namespace SUPERGASBRASIL_API.Controllers
             {
                 var create = client.CreateClientNatural(clientEntity);
 
-                return CreatedAtAction(nameof(BuscarCpf), new {cpf = create.CPF}, create );
-            } catch (ValidationException ex)
+                return CreatedAtAction(nameof(BuscarCpf), new { cpf = create.CPF }, create);
+            }
+            catch (ValidationException ex)
             {
                 return BadRequest(new { errors = ex.Errors.Select(e => e.ErrorMessage) });
             }
@@ -54,12 +59,12 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(500, $"Operação não concluida, Erro ao criar client {ex.Message}");
             }
         }
+
         ///<summary>
         /// Buscar todos os Clientes.
         /// </summary>
-         /// <response code="404">Se o item não for encontrado</response> 
-
-        [HttpGet("BuscarTodosClientesF")]
+        /// <response code="404">Se o item não for encontrado</response> 
+        [HttpGet("buscar-todos-clientes")]
         public IActionResult BuscarTodosClientes()
         {
             try
@@ -73,23 +78,27 @@ namespace SUPERGASBRASIL_API.Controllers
                 return StatusCode(404, $"Clientes não encontrados, Erro na operação {ex.Message}");
             }
         }
+
         /// <summary>
         /// Buscar os Clientes pelo nome.
         /// </summary>
         ///
         /// <response code="404">Se o item não for encontrado</response> 
-        [HttpGet("nomeClient/{name}")]
+        [HttpGet("nomeCliente/{name}")]
         public IActionResult BuscarNome(string name)
         {
-            try { 
-            var clientName = client.FindByName(name);
+            try
+            {
+                var clientName = client.FindByName(name);
 
                 return Ok(clientName);
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return StatusCode(404, $"Cliente não encontrado, Erro na operação {ex.Message}");
             }
         }
+
         /// <summary>
         /// Buscar os Clientes pelo CPF.
         /// </summary>
@@ -98,7 +107,6 @@ namespace SUPERGASBRASIL_API.Controllers
         [HttpGet("cpf/{cpf}")]
         public IActionResult BuscarCpf(string cpf)
         {
-
             try
             {
                 var clientCpf = client.FindByCpf(cpf);
@@ -109,7 +117,9 @@ namespace SUPERGASBRASIL_API.Controllers
             {
                 return StatusCode(404, $"Cliente não encontrado, Erro na operação {ex.Message}");
             }
-        }/// <summary>
+        }
+        
+        /// <summary>
          /// Atualizar um registro de Cliente.
          /// </summary>
          /// <remarks>
@@ -141,7 +151,9 @@ namespace SUPERGASBRASIL_API.Controllers
             {
                 return StatusCode(500, $"Cliente não encontrado, Erro na operação {ex.Message}");
             }
-        }/// <summary>
+        }
+        
+        /// <summary>
          /// Deletar o Clientes pelo ID.
          /// </summary>
          ///
