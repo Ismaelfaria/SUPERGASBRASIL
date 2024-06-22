@@ -98,4 +98,8 @@ Este software usa os seguintes pacotes de código aberto:
 - [Mapeamento de dados - AutoMapper](https://docs.automapper.org/en/stable/)
 - [Validação dos dados - FluentValidator](https://docs.fluentvalidation.net/en/latest/)
 
+
+!Texto Alternativo
+<img src="https://th.bing.com/th/id/R.480350682536c00f1f71f53afb180ad4?rik=b9xoZXTg5PLYbg&riu=http%3a%2f%2ftonchisambiental.com.br%2fwp-content%2fuploads%2f2020%2f09%2fsupergasbras-logo-1.png&ehk=cLcdWws9VpiMtMbdofHlNndJWv7Hf2ILYJO1rkU%2bTLI%3d&risl=&pid=ImgRaw&r=0" alt="Texto Alternativo">
+
 ---
