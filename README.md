@@ -19,7 +19,7 @@
 ## Principais Características
 
 CRUD:
-* Clientes Juridicos
+* Clientes Juridicos - Para validar o CNPJ, uso da API "https://brasilapi.com.br/api/cnpj/v1/{cnpj}".
 * Clientes Fisicos
 * Funcionários
 * Usuários que vão ter acesso ao sistema
