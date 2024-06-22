@@ -98,8 +98,4 @@ Este software usa os seguintes pacotes de código aberto:
 - [Mapeamento de dados - AutoMapper](https://docs.automapper.org/en/stable/)
 - [Validação dos dados - FluentValidator](https://docs.fluentvalidation.net/en/latest/)
 
-
-!Texto Alternativo
-<img src="https://www.canva.com/design/DAGI5pVUaLg/CO2CFFQLOklXjjV4kE1DHQ/view?utm_content=DAGI5pVUaLg&utm_campaign=designshare&utm_medium=link&utm_source=editor" alt="Texto Alternativo">
-
 ---
