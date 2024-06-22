@@ -19,18 +19,18 @@
 ## Principais Características
 
 CRUD:
-* Clientes Juridicos - Para validar o CNPJ, uso da API "https://brasilapi.com.br/api/cnpj/v1/{cnpj}".
-* Clientes Fisicos
-* Funcionários
-* Usuários que vão ter acesso ao sistema
+- [x] Clientes Juridicos - Para validar o CNPJ, uso da API "https://brasilapi.com.br/api/cnpj/v1/{cnpj}".
+- [x] Clientes Fisicos.
+- [x] Funcionários.
+- [x] Usuários que vão ter acesso ao sistema.
   
 AUTENTICAÇÃO:
-* JWT Authentication - Acesso de ADM e Secretárias.
+- [x] JWT Authentication - Acesso de ADM e Secretárias.
 
 CONTROLE DE ESTOQUE(CRUD):
-* Produto
-* Inventário
-* Transações
+- [x] Produto.
+- [x] Inventário.
+- [x] Transações.
   
 ## EndPoints
 ```bash
