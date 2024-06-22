@@ -73,6 +73,20 @@ $ npm install
 
 # Run the app
 $ npm start
+
+#Banco de dados
+
+- Configuração:
+Colocar a sua URL de conexão na classe appsettings.json
+
+ "ConnectionStrings": {
+    "GasConnection": "Sua URL"
+  }
+
+- Comandos:
+ Add-Migration nomeDaMigração
+ Update-Database
+
 ```
 
 ## Dependências
