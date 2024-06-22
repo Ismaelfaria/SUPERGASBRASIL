@@ -33,8 +33,8 @@ CONTROLE DE ESTOQUE(CRUD):
 * Transações
   
 <br>
-  <a><img src="https://www.canva.com/design/DAGI5pVUaLg/CO2CFFQLOklXjjV4kE1DHQ/view?utm_content=DAGI5pVUaLg&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel" alt="Markdownify" width="200"></a>
-  <br>
+  <a><img src="https://www.canva.com/design/DAGI5pVUaLg/CO2CFFQLOklXjjV4kE1DHQ/view?utm_content=DAGI5pVUaLg&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel" width="200"></a>
+  
   
 ## EndPoints
 ```bash
