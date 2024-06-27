@@ -10,41 +10,55 @@
 <h4 align="center">Uma aplicação Web feita com Asp.Net Core. <a href="https://www.supergasbras.com.br" target="_blank">SuperGasBrasil</a>.</h4>
 
 <p align="center">
-  <a href="https://badge.fury.io/js/electron-markdownify">
-    <img src="https://badge.fury.io/js/electron-markdownify.svg"
-         alt="Gitter">
-  </a>
-  <a href="https://gitter.im/amitmerchant1990/electron-markdownify"><img src="https://badges.gitter.im/amitmerchant1990/electron-markdownify.svg"></a>
-  <a href="https://saythanks.io/to/bullredeyes@gmail.com">
-      <img src="https://img.shields.io/badge/SayThanks.io-%E2%98%BC-1EAEDB.svg">
-  </a>
-  <a href="https://www.paypal.me/AmitMerchant">
-    <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
-  </a>
-</p>
-
-<p align="center">
   <a href="#Dependências">Dependências</a> •
   <a href="#Principais-Características">Principais Características</a> •
+  <a href="#EndPoints">EndPoints</a> •
   <a href="#Modo-de-Utilização">Modo de Utilização</a> 
 </p>
 
 ## Principais Características
 
 CRUD:
-* Clientes Juridicos
-* Clientes Fisicos
-* Funcionários
-* Usuários que vão ter acesso ao sistema
+- [x] Clientes Juridicos - Para validar o CNPJ, uso da API "https://brasilapi.com.br/api/cnpj/v1/{cnpj}".
+- [x] Clientes Fisicos.
+- [x] Funcionários.
+- [x] Usuários que vão ter acesso ao sistema.
   
 AUTENTICAÇÃO:
-* JWT Authentication - Acesso de ADM e Secretárias.
+- [x] JWT Authentication - Acesso de ADM e Secretárias.
 
 CONTROLE DE ESTOQUE(CRUD):
-* Produto
-* Inventário
-* Transações 
+- [x] Produto.
+- [x] Inventário.
+- [x] Transações.
+  
+## EndPoints
+```bash
+#Clientes
+$ api/Cliente/Juridico
+$ api/Cliente/Fisico
 
+#Funcionarios
+$ api/Funcionario
+
+#Produto
+$ api/Produto
+
+#Estoque
+$ api/Inventario - para gerenciar o estoque.
+
+#Transação
+$ api/Transacao - para controlar Venda|Reposição.
+
+#Login
+$ api/Login - para obter o Token de validação, caso cadastrado.
+
+#Login
+$ api/Login - para obter o Token de validação, caso cadastrado.
+
+#Cadastro
+$ api/Usuarios - para se cadastrar.
+```
 ## Modo de Utilização
 
 Coloque as configurações do seu Banco de Dados, e faça a conexão:
@@ -59,6 +73,20 @@ $ npm install
 
 # Run the app
 $ npm start
+
+#Banco de dados
+
+- Configuração:
+Colocar a sua URL de conexão na classe appsettings.json
+
+ "ConnectionStrings": {
+    "GasConnection": "Sua URL"
+  }
+
+- Comandos:
+ Add-Migration nomeDaMigração
+ Update-Database
+
 ```
 
 ## Dependências
