@@ -43,7 +43,7 @@ namespace SUPERGASBRASIL_API.Controllers
         /// <response code="201">Retorna o novo item criado</response>
         /// <response code="500">Se o item não for criado</response> 
         [HttpPost]
-        public IActionResult CriarClientFisico([FromForm] Employees_InputModel employees_InputModel)
+        public IActionResult CriarFuncionario([FromForm] Employees_InputModel employees_InputModel)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace SUPERGASBRASIL_API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Operação não concluida, Erro ao criar client {ex.Message}");
+                return StatusCode(500, $"Operação não concluida, Erro ao criar funcionario {ex.Message}");
             }
         }
 
