@@ -1,5 +1,6 @@
-﻿using SUPERGASBRASIL_API.Mappers.Models.InputModel;
-using SUPERGASBRASIL_API.Validators;
+﻿using SUPERGASBRASIL_API.App.Mapping.Models.InputModel;
+using SUPERGASBRASIL_API.App.Validators;
+using SUPERGASBRASIL_API.Domain.Enum;
 
 namespace SuperGasTest
 {
@@ -13,7 +14,7 @@ namespace SuperGasTest
                 Name = "ismael",
                 Cpf = 12345678912,
                 DateOfBirth = new DateTime(1990, 5, 15),
-                Position = SUPERGASBRASIL_API.Entities.Enum.EPositions.Gerente,
+                Position = EPositions.Gerente,
                 Salary = 1200,
                 HireDate = new DateTime(2015, 8, 11)
             };
@@ -32,7 +33,7 @@ namespace SuperGasTest
                 Name = "",
                 Cpf = 12345678912,
                 DateOfBirth = new DateTime(1990, 5, 15),
-                Position = SUPERGASBRASIL_API.Entities.Enum.EPositions.Gerente,
+                Position = EPositions.Gerente,
                 Salary = 1200,
                 HireDate = new DateTime(2015, 8, 11)
             };
@@ -50,7 +51,7 @@ namespace SuperGasTest
             {
                 Name = "ismael",
                 DateOfBirth = new DateTime(1990, 5, 15),
-                Position = SUPERGASBRASIL_API.Entities.Enum.EPositions.Gerente,
+                Position = EPositions.Gerente,
                 Salary = 1200,
                 HireDate = new DateTime(2015, 8, 11)
             };
@@ -68,7 +69,7 @@ namespace SuperGasTest
             {
                 Name = "ismael",
                 Cpf = 12345678912,
-                Position = SUPERGASBRASIL_API.Entities.Enum.EPositions.Gerente,
+                Position = EPositions.Gerente,
                 Salary = 1200,
                 HireDate = new DateTime(2015, 8, 11)
             };
@@ -86,7 +87,7 @@ namespace SuperGasTest
             {
                 Name = "ismael",
                 Cpf = 12345678912,
-                Position = SUPERGASBRASIL_API.Entities.Enum.EPositions.Gerente,
+                Position = EPositions.Gerente,
                 DateOfBirth = new DateTime(1990, 5, 15),
                 HireDate = new DateTime(2015, 8, 11)
             };
