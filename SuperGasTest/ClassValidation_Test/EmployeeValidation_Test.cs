@@ -2,9 +2,9 @@
 using SUPERGASBRASIL_API.App.Validators;
 using SUPERGASBRASIL_API.Domain.Enum;
 
-namespace SuperGasTest
+namespace SuperGasTest.ClassValidation_Test
 {
-    public class EmployeeValidationTest
+    public class EmployeeValidation_Test
     {
         [Fact]
         public void Test_ValidacaoFuncionario_Success()

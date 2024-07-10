@@ -64,7 +64,7 @@ namespace SuperGasTest
             var employees = employeeService.FindAll();
 
             Assert.NotNull(employees);
-            Assert.Equal(3, employees.Count()); 
+            Assert.Equal(3, employees.Count());
         }
     }
 }
