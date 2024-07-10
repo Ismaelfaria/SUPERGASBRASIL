@@ -23,6 +23,7 @@ CRUD:
 - [x] Clientes Fisicos.
 - [x] Funcionários.
 - [x] Usuários que vão ter acesso ao sistema.
+- [x] Projeto dividido em 3 Camadas(App,Domain e infra).
   
 AUTENTICAÇÃO:
 - [x] JWT Authentication - Acesso de ADM e Secretárias.
