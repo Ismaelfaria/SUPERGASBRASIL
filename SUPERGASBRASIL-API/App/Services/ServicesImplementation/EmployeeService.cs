@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using SUPERGASBRASIL_API.App.Interfaces;
+using SUPERGASBRASIL_API.App.InterfacesRep;
 using SUPERGASBRASIL_API.App.Mapping.Models.InputModel;
 using SUPERGASBRASIL_API.App.Services.Interfaces;
 using SUPERGASBRASIL_API.Domain;
@@ -58,7 +59,7 @@ namespace SUPERGASBRASIL_API.App.Services.ServicesImplementation
 
             createMapObject.Age = DateTime.Now.Year - createMapObject.DateOfBirth.Year;
 
-            Employee.CreateEmployee(createMapObject);
+            Employee.Create(createMapObject);
 
             return createMapObject;
         }
@@ -66,7 +67,7 @@ namespace SUPERGASBRASIL_API.App.Services.ServicesImplementation
         {
             try
             {
-                Employee.DeleteEmployee(id);
+                Employee.Delete(id);
             }
             catch (Exception ex)
             {
@@ -77,7 +78,7 @@ namespace SUPERGASBRASIL_API.App.Services.ServicesImplementation
         {
             try
             {
-                var usersDatabase = Employee.FindAll();
+                var usersDatabase = Employee.GetAll();
 
                 return usersDatabase;
             }

@@ -1,12 +1,10 @@
-﻿using SUPERGASBRASIL_API.Domain;
+﻿using SUPERGASBRASIL_API.App.InterfacesRep;
+using SUPERGASBRASIL_API.Domain;
 
 namespace SUPERGASBRASIL_API.App.Interfaces
 {
-    public interface IClientNaturalRepository
+    public interface IClientNaturalRepository : IRepository<ClientNaturalPerson>
     {
-        ClientNaturalPerson CreateClientNatural(ClientNaturalPerson clientNatural);
-        void DeleteClientNatural(Guid id);
-        IEnumerable<ClientNaturalPerson> FindAll();
         ClientNaturalPerson FindByCpf(string cpf);
         ClientNaturalPerson FindByName(string name);
         void UpdateClientNatural(string cpf, ClientNaturalPerson clientLegal);

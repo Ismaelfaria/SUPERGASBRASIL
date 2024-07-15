@@ -4,34 +4,10 @@ using SUPERGASBRASIL_API.Infra.Context;
 
 namespace SUPERGASBRASIL_API.Infra.Repositorios
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository : RepositoryBase<Employees>
     {
-        private readonly GasContext _context;
-
-        public EmployeeRepository(GasContext context)
+        public EmployeeRepository(GasContext context) : base(context)
         {
-            _context = context;
-        }
-
-        public Employees CreateEmployee(Employees employee)
-        {
-            _context.Employees.Add(employee);
-            _context.SaveChanges();
-
-            return employee;
-        }
-        public void DeleteEmployee(Guid id)
-        {
-            var userDatabase = _context.Employees.SingleOrDefault(a => a.IdEmployees == id);
-
-            userDatabase.Deleted();
-            _context.SaveChanges();
-        }
-        public IEnumerable<Employees> FindAll()
-        {
-            var usersDatabase = _context.Employees.Where(a => !a.IsDeleted).ToList();
-
-            return usersDatabase;
         }
 
         public Employees FindByCpf(long cpf)

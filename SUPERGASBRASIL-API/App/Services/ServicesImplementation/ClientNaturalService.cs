@@ -41,7 +41,7 @@ namespace SUPERGASBRASIL_API.App.Services.ServicesImplementation
 
             createMapObject.Age = age;
 
-            client.CreateClientNatural(createMapObject);
+            client.Create(createMapObject);
 
             return createMapObject;
         }
@@ -49,7 +49,7 @@ namespace SUPERGASBRASIL_API.App.Services.ServicesImplementation
         {
             try
             {
-                client.DeleteClientNatural(id);
+                client.Delete(id);
             }
             catch (Exception ex)
             {
@@ -60,7 +60,7 @@ namespace SUPERGASBRASIL_API.App.Services.ServicesImplementation
         {
             try
             {
-                var usersDatabase = client.FindAll();
+                var usersDatabase = client.GetAll();
 
                 return usersDatabase;
             }

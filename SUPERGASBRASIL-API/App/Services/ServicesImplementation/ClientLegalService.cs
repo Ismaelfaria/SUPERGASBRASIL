@@ -55,7 +55,7 @@ namespace SUPERGASBRASIL_API.App.Services.ServicesImplementation
                 throw new Exception("Erro ao buscar informações do CNPJ");
             }
 
-            var c = client.CreateClientLegal(createMapObject);
+            var c = client.Create(createMapObject);
 
             return c;
 
@@ -64,7 +64,7 @@ namespace SUPERGASBRASIL_API.App.Services.ServicesImplementation
         {
             try
             {
-                client.DeleteClientLegal(id);
+                client.Delete(id);
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@ namespace SUPERGASBRASIL_API.App.Services.ServicesImplementation
         {
             try
             {
-                var usersDatabase = client.FindAll();
+                var usersDatabase = client.GetAll();
 
                 return usersDatabase;
             }

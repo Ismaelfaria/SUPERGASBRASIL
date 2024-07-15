@@ -1,14 +1,11 @@
 ﻿using SUPERGASBRASIL_API.Domain;
 
-namespace SUPERGASBRASIL_API.App.Interfaces
+namespace SUPERGASBRASIL_API.App.InterfacesRep
 {
-    public interface IEmployeeRepository
+    public interface IEmployeeRepository : IRepository<Employees>
     {
-        Employees CreateEmployee(Employees funcionario);
-        void DeleteEmployee(Guid id);
-        void UpdateEmployee(long cpf, Employees funcionario);
-        IEnumerable<Employees> FindAll();
         Employees FindByCpf(long cpf);
         Employees FindByName(string name);
+        void UpdateEmployee(long cpf, Employees funcionario);
     }
 }

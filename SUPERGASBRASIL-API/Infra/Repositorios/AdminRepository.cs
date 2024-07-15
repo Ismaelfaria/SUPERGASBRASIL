@@ -4,37 +4,11 @@ using SUPERGASBRASIL_API.Infra.Context;
 
 namespace SUPERGASBRASIL_API.Infra.Repositorios
 {
-    public class AdminRepository : IAdminRepository
+    public class AdminRepository : RepositoryBase<Admin>
     {
-        private readonly GasContext _context;
-
-        public AdminRepository(GasContext context)
+        public AdminRepository(GasContext context) : base(context)
         {
-            _context = context;
         }
-
-        public Admin CreateAdmin(Admin admin)
-        {
-            _context.Admin.Add(admin);
-            _context.SaveChanges();
-
-            return admin;
-        }
-        public void DeleteAdmin(Guid id)
-        {
-            var userDatabase = _context.Admin.SingleOrDefault(a => a.IdAdmin == id);
-
-            userDatabase.Deleted();
-            _context.SaveChanges();
-        }
-
-        public IEnumerable<Admin> FindAll()
-        {
-            var usersDatabase = _context.Admin.Where(a => !a.IsDeleted).ToList();
-
-            return usersDatabase;
-        }
-
         public Admin FindByUserName(string name)
         {
             var userDatabase = _context.Admin.SingleOrDefault(a => a.Username == name);

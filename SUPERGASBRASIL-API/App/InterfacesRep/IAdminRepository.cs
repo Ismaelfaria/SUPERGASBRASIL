@@ -1,12 +1,10 @@
-﻿using SUPERGASBRASIL_API.Domain;
+﻿using SUPERGASBRASIL_API.App.InterfacesRep;
+using SUPERGASBRASIL_API.Domain;
 
 namespace SUPERGASBRASIL_API.App.Interfaces
 {
-    public interface IAdminRepository
+    public interface IAdminRepository : IRepository<Admin>
     {
-        Admin CreateAdmin(Admin adm);
-        void DeleteAdmin(Guid id);
-        IEnumerable<Admin> FindAll();
         Admin FindByUserName(string name);
         void UpdateAdmin(string userName, Admin adm);
     }

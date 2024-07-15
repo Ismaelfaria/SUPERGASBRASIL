@@ -1,13 +1,10 @@
-﻿using SUPERGASBRASIL_API.Domain;
+﻿using SUPERGASBRASIL_API.App.InterfacesRep;
+using SUPERGASBRASIL_API.Domain;
 
 namespace SUPERGASBRASIL_API.App.Interfaces
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepository<User>
     {
-        User Create(User user);
-        void Delete(Guid id);
-        IEnumerable<User> FindAll();
         User FindByUserName(string name);
-
     }
 }

@@ -4,34 +4,10 @@ using SUPERGASBRASIL_API.Infra.Context;
 
 namespace SUPERGASBRASIL_API.Infra.Repositorios
 {
-    public class ClientNaturalRepository : IClientNaturalRepository
+    public class ClientNaturalRepository : RepositoryBase<Employees>
     {
-        private readonly GasContext _context;
-
-        public ClientNaturalRepository(GasContext context)
+        public ClientNaturalRepository(GasContext context) : base(context)
         {
-            _context = context;
-        }
-
-        public ClientNaturalPerson CreateClientNatural(ClientNaturalPerson clientNatural)
-        {
-            _context.ClientNatural.Add(clientNatural);
-            _context.SaveChanges();
-
-            return clientNatural;
-        }
-        public void DeleteClientNatural(Guid id)
-        {
-            var userDatabase = _context.ClientNatural.SingleOrDefault(a => a.IdClientNaturalPerson == id);
-
-            userDatabase.Deleted();
-            _context.SaveChanges();
-        }
-        public IEnumerable<ClientNaturalPerson> FindAll()
-        {
-            var usersDatabase = _context.ClientNatural.Where(a => !a.IsDeleted).ToList();
-
-            return usersDatabase;
         }
 
         public ClientNaturalPerson FindByCpf(string cpf)

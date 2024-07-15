@@ -58,7 +58,7 @@ namespace SUPERGASBRASIL_API.App.Services.ServicesImplementation
         }
         public IEnumerable<User> FindAll()
         {
-            var Dados = _user.FindAll();
+            var Dados = _user.GetAll();
 
             return Dados;
         }

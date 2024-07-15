@@ -4,35 +4,10 @@ using SUPERGASBRASIL_API.Infra.Context;
 
 namespace SUPERGASBRASIL_API.Infra.Repositorios
 {
-    public class ClientLegalRepository : IClientLegalRepository
+    public class ClientLegalRepository : RepositoryBase<ClientLegalEntity>
     {
-        private readonly GasContext _context;
-
-        public ClientLegalRepository(GasContext context)
+        public ClientLegalRepository(GasContext context) : base(context)
         {
-            _context = context;
-        }
-
-        public ClientLegalEntity CreateClientLegal(ClientLegalEntity clientLegal)
-        {
-            _context.ClientLegal.Add(clientLegal);
-            _context.SaveChanges();
-
-            return clientLegal;
-
-        }
-        public void DeleteClientLegal(Guid id)
-        {
-            var userDatabase = _context.ClientLegal.SingleOrDefault(a => a.IdClientLegalEntity == id);
-
-            userDatabase.Deleted();
-            _context.SaveChanges();
-        }
-        public IEnumerable<ClientLegalEntity> FindAll()
-        {
-            var usersDatabase = _context.ClientLegal.Where(a => !a.IsDeleted).ToList();
-
-            return usersDatabase;
         }
 
         public ClientLegalEntity FindByCnpj(long cnpj)

@@ -36,17 +36,17 @@ namespace SUPERGASBRASIL_API.App.Services.ServicesImplementation
 
             createMapObject.IdAdmin = Guid.NewGuid();
 
-            var createdItem = _admin.CreateAdmin(createMapObject);
+            var createdItem = _admin.Create(createMapObject);
 
             return createdItem;
         }
         public void DeleteAdmin(Guid id)
         {
-            _admin.DeleteAdmin(id);
+            _admin.Delete(id);
         }
         public IEnumerable<Admin> FindAll()
         {
-            var Dados = _admin.FindAll();
+            var Dados = _admin.GetAll();
 
             return Dados;
         }
